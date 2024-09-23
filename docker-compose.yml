@@ -22,7 +22,7 @@ services:
     image: postgres:15-alpine
     restart: always
     environment:
-      POSTGRES_DB: djangodefault
+      POSTGRES_DB: ticket
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: '1253'
     volumes:

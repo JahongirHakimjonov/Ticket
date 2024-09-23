@@ -1,5 +1,7 @@
 from telebot.custom_filters import SimpleCustomFilter
 
+from apps.ticket.models import BotUsers
+
 
 class AdminFilter(SimpleCustomFilter):
     """
@@ -9,4 +11,5 @@ class AdminFilter(SimpleCustomFilter):
     key = "admin"
 
     def check(self, message):
-        return message.from_user.id in [483578239, 987654321]  # Add your admin ids here
+        admins = BotUsers.objects.exclude(role="user").values_list("telegram_id", flat=True)
+        return message.from_user.id in admins

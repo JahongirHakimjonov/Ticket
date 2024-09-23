@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
-            git pull origin main
-            docker compose up --build -d
-            docker image prune -f
+            sudo git pull origin main
+            sudo docker compose up --build -d
+            sudo docker image prune -f
             echo "Deploy jarayoni muvaffaqiyatli yakunlandi!"

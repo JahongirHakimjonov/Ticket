@@ -4,13 +4,13 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        User = get_user_model()
-        self.create_superuser(User, "jahongir", "jahongirhakimjonov@gmail.com", "1253")
+        user = get_user_model()
+        self.create_superuser(user, "jahongir", "jahongirhakimjonov@gmail.com", "1253")
         self.create_superuser(
-            User, "Jahongir", "jahongirhakimjonov@gmail.com", "20030307mart"
+            user, "Jahongir", "jahongirhakimjonov@gmail.com", "20030307mart"
         )
         self.create_superuser(
-            User, "998330078587", "jahongirhakimjonov@gmail.com", "20030307mart"
+            user, "998330078587", "jahongirhakimjonov@gmail.com", "20030307mart"
         )
 
     def create_superuser(self, User, username, email, password):
