@@ -12,7 +12,7 @@ class Concert(AbstractBaseModel):
     name = models.CharField(max_length=255, unique=True, verbose_name=_("Nomi"))
     title = models.CharField(max_length=255, verbose_name=_("Sarlavha"))
     description = models.TextField(verbose_name=_("Tavsif"))
-    date = models.DateField(verbose_name=_("Boshlanish sanasi"))
+    date = models.DateField(verbose_name=_("Sanasi"))
     time = models.TimeField(verbose_name=_("Vaqt"))
     min_price = models.DecimalField(
         max_digits=100, decimal_places=2, verbose_name=_("Eng arzon narx")
@@ -20,11 +20,20 @@ class Concert(AbstractBaseModel):
     max_price = models.DecimalField(
         max_digits=100, decimal_places=2, verbose_name=_("Eng qimmat narx")
     )
-    hall = models.ForeignKey(
-        "Hall", on_delete=models.CASCADE, verbose_name=_("Konsert zal")
+    address = models.CharField(max_length=255, verbose_name=_("Manzil"))
+    location_google_maps = models.URLField(
+        max_length=255, verbose_name=_("Google Maps manzili")
+    )
+    location_yandex_maps = models.URLField(
+        max_length=255, verbose_name=_("Yandex Maps manzili")
     )
     photo = models.ImageField(upload_to="concerts", verbose_name=_("Rasm"))
-    thumbnail = models.ImageField(upload_to="concerts", verbose_name=_("Mini rasm"), blank=True, null=True)
+    thumbnail = models.ImageField(
+        upload_to="concerts/thumbnail",
+        verbose_name=_("Mini rasm"),
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.name
@@ -41,10 +50,9 @@ class Concert(AbstractBaseModel):
 
     def make_thumbnail(self):
         image = Image.open(self.photo)
-        image.thumbnail((100, 100), Image.LANCZOS)
-
+        image.thumbnail((200, 200))
+        thumb_name = self.photo.name.replace(".", "_thumb.")
         thumb_io = BytesIO()
-        image.save(thumb_io, format='JPEG', quality=85)
-
-        thumb_file = ContentFile(thumb_io.getvalue(), name=self.photo.name)
-        self.thumbnail.save(thumb_file.name, thumb_file, save=False)
+        image.save(thumb_io, "JPEG", quality=85)
+        self.thumbnail.save(thumb_name, ContentFile(thumb_io.getvalue()), save=False)
+        thumb_io.close()

@@ -11,5 +11,7 @@ class AdminFilter(SimpleCustomFilter):
     key = "admin"
 
     def check(self, message):
-        admins = BotUsers.objects.exclude(role="user").values_list("telegram_id", flat=True)
+        admins = BotUsers.objects.exclude(role="user").values_list(
+            "telegram_id", flat=True
+        )
         return message.from_user.id in admins

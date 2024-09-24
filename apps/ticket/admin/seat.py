@@ -6,8 +6,8 @@ from apps.ticket.models import Seat
 
 @admin.register(Seat)
 class SeatAdmin(ModelAdmin):
-    list_display = ("id", "row", "seat_number", "hall", "created_at")
-    search_fields = ("row", "seat_number", "hall__name")
+    list_display = ("id", "name", "count", "price", "concert")
+    search_fields = ("name",)
     list_filter = ("created_at",)
     actions = ["make_active", "make_inactive"]
 

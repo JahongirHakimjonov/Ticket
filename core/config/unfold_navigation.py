@@ -49,19 +49,9 @@ PAGES = [
         "title": _("Zallar"),
         "items": [
             {
-                "title": _("Zallar"),
-                "icon": "stadium",
-                "link": reverse_lazy("admin:ticket_hall_changelist"),
-            },
-            {
                 "title": _("O'rindiqlar"),
                 "icon": "airline_seat_recline_normal",
                 "link": reverse_lazy("admin:ticket_seat_changelist"),
-            },
-            {
-                "title": _("Konsertlar o'rindiqlari"),
-                "icon": "event_seat",
-                "link": reverse_lazy("admin:ticket_concertseat_changelist"),
             },
         ],
     },

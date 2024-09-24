@@ -5,15 +5,15 @@ from apps.shared.models import AbstractBaseModel
 
 
 class Seat(AbstractBaseModel):
-    hall = models.ForeignKey("Hall", on_delete=models.CASCADE, verbose_name=_("Zal"))
-    row = models.PositiveIntegerField(verbose_name=_("Qator"))
-    seat_number = models.PositiveIntegerField(verbose_name=_("Joy raqami"))
+    concert = models.ForeignKey("Concert", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, verbose_name=_("Nomi"))
+    count = models.PositiveIntegerField(verbose_name=_("Joylar soni"))
     price = models.DecimalField(
         max_digits=100, decimal_places=2, verbose_name=_("Narx")
     )
 
     def __str__(self):
-        return f"{self.hall} - {self.row} - {self.seat_number}"
+        return f"{self.name} - {self.concert.name}"
 
     class Meta:
         db_table = "seat"

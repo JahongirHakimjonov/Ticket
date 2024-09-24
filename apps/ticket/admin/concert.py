@@ -1,7 +1,13 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
+from unfold.admin import TabularInline
 
-from apps.ticket.models import Concert
+from apps.ticket.models import Concert, Seat
+
+
+class SeatInline(TabularInline):
+    model = Seat
+    extra = 1
 
 
 @admin.register(Concert)
@@ -11,6 +17,7 @@ class ConcertAdmin(ModelAdmin):
     list_filter = ("is_active",)
     list_editable = ("is_active",)
     actions = ["make_active", "make_inactive"]
+    inlines = [SeatInline]
 
     def make_active(self, request, queryset):
         queryset.update(is_active=True)

@@ -14,6 +14,7 @@ from apps.bot.filters import AdminFilter
 from apps.bot.handlers.admin import admin_user
 from apps.bot.handlers.user import any_user
 from apps.bot.middlewares import antispam_func
+from apps.bot.handlers.home import handle_message
 from apps.bot.middlewares import set_language
 from apps.bot.utils.database import Database
 from telebot import TeleBot, apihelper
@@ -42,6 +43,7 @@ def register_handlers():
     bot.register_message_handler(
         any_user, commands=["start"], admin=False, pass_bot=True
     )
+    bot.register_message_handler(handle_message, content_types=["text"], pass_bot=True)
 
 
 register_handlers()

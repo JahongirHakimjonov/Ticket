@@ -1,27 +1,35 @@
 from telebot import TeleBot
-from telebot.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from telebot.types import Message
 
-from apps.bot.utils import update_or_create_user
+from apps.ticket.models import Concert
 
 
 def any_user(message: Message, bot: TeleBot):
-    markup = InlineKeyboardMarkup()
-    uz_button = InlineKeyboardButton("O'zbek", callback_data='uz')
-    ru_button = InlineKeyboardButton('Русский', callback_data='ru')
-    markup.add(uz_button, ru_button)
-    bot.send_message(message.chat.id, "Tilni tanlang / Выберите язык", reply_markup=markup)
-    bot.register_callback_query_handler(lambda call: save_user_language(call, bot),
-                                        func=lambda call: call.data in ['uz', 'ru'])
-
-
-def save_user_language(call, bot: TeleBot):
-    language = call.data
-    update_or_create_user(
-        telegram_id=call.message.chat.id,
-        username=call.from_user.username if call.from_user.username else None,
-        first_name=call.from_user.first_name if call.from_user.first_name else None,
-        last_name=call.from_user.last_name if call.from_user.last_name else None,
-        phone=None,  # Assuming phone number is not available in the message
-        language_code=language
-    )
-    bot.send_message(call.message.chat.id, "Til tanlandi / Язык выбран")
+    try:
+        if message.text.startswith('/start '):
+            concert_id = message.text.split(' ')[1]
+            concert = Concert.objects.get(id=concert_id)
+            if concert.is_active:
+                thumbnail_url = (
+                    "https://classcom.felixits.uz/media/documents/2024/09/23/2_1.jpg"
+                )
+                bot.send_photo(
+                    message.chat.id,
+                    photo=concert.photo,
+                    caption=f"{concert.name}\n\n{concert.title}\n\n"
+                    f"Sana: {concert.date.strftime('%d.%m.%Y')}\nVaqti: {concert.time.strftime('%H:%M')}\n\n"
+                    f"{concert.description}\n\n[ ]({thumbnail_url})\n"
+                    f"*📍Manzil:* {concert.address}\n\n"
+                    f"[📍Google Xarita]({concert.location_google_maps})\n[📍Yandex Xarita]({concert.location_yandex_maps})\n\n"
+                    f"*💸Narxlar:* {concert.min_price:,} UZS - {concert.max_price:,} UZS\n",
+                    parse_mode="Markdown"
+                )
+            else:
+                bot.send_message(message.chat.id, "This concert is not active.")
+        else:
+            bot.send_message(message.chat.id, "Welcome to the bot! Use the inline buttons to search for concerts.")
+    except Concert.DoesNotExist:
+        bot.send_message(message.chat.id, "Concert not found.")
+    except Exception as e:
+        bot.send_message(message.chat.id, "An error occurred.")
+        print(e)

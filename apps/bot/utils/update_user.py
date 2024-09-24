@@ -1,7 +1,14 @@
 from apps.ticket.models import BotUsers
 
 
-def update_or_create_user(telegram_id, username=None, first_name=None, last_name=None, phone=None, language_code='uz'):
+def update_or_create_user(
+    telegram_id,
+    username=None,
+    first_name=None,
+    last_name=None,
+    phone=None,
+    language_code="uz",
+):
     """
     Update or create a user in the BotUsers model.
 
@@ -15,10 +22,10 @@ def update_or_create_user(telegram_id, username=None, first_name=None, last_name
     BotUsers.objects.update_or_create(
         telegram_id=telegram_id,
         defaults={
-            'username': username,
-            'first_name': first_name,
-            'last_name': last_name,
-            'phone': phone,
-            'language_code': language_code
-        }
+            "username": username,
+            "first_name": first_name,
+            "last_name": last_name,
+            "phone": phone,
+            "language_code": language_code,
+        },
     )

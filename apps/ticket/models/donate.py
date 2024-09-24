@@ -8,11 +8,13 @@ class Donate(AbstractBaseModel):
     user = models.ForeignKey(
         "BotUsers", on_delete=models.CASCADE, verbose_name=_("Foydalanuvchi")
     )
-    phone = models.CharField(max_length=255, verbose_name=_("Telefon raqam"))
+    phone = models.CharField(
+        max_length=255, verbose_name=_("Telefon raqam"), blank=True, null=True
+    )
     amount = models.DecimalField(
         max_digits=100, decimal_places=2, verbose_name=_("Summa")
     )
-    message = models.TextField(verbose_name=_("Xabar"))
+    message = models.TextField(verbose_name=_("Xabar"), blank=True, null=True)
 
     def __str__(self):
         return self.user
