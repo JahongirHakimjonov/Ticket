@@ -50,5 +50,3 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
     except Exception as e:
         bot.answer_callback_query(call.id, "An error occurred.")
         logger.error(f"Error while handling PayMe callback: {e}")
-
-

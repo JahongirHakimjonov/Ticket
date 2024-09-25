@@ -55,8 +55,8 @@ def handle_message(message: Message, bot: TeleBot):
     elif state == Order.phone:
         handle_phone(message, bot)
     else:
-            bot.send_message(
-                message.chat.id,
-                "I don't understand you, please use the buttons below",
-                reply_markup=get_main_buttons(),
-            )
+        bot.send_message(
+            message.chat.id,
+            "I don't understand you, please use the buttons below",
+            reply_markup=get_main_buttons(),
+        )

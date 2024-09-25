@@ -13,9 +13,9 @@ class Command(BaseCommand):
             user, "998330078587", "jahongirhakimjonov@gmail.com", "20030307mart"
         )
 
-    def create_superuser(self, User, username, email, password):
-        if not User.objects.filter(username=username).exists():
-            User.objects.create_superuser(username, email, password)
+    def create_superuser(self, user, username, email, password):
+        if not user.objects.filter(username=username).exists():
+            user.objects.create_superuser(username, email, password)
             self.stdout.write(
                 self.style.SUCCESS(f"Superuser {username} created successfully.")
             )

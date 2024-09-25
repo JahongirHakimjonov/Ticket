@@ -1,9 +1,8 @@
 import os
-import time
+import sys
 
-import requests
-
-from apps.bot.handlers.callback import handle_callback_query
+# Add the project directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Set the DJANGO_SETTINGS_MODULE environment variable
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")  # noqa
@@ -11,9 +10,14 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")  # noqa
 # Initialize Django
 import django
 
-django.setup()  # noqa
+django.setup()
+
+# Rest of your code...
 
 # Django
+import time
+
+import requests
 from apps.bot.conf import TOKEN
 from apps.bot.filters import AdminFilter
 from apps.bot.handlers.user import any_user
@@ -25,6 +29,7 @@ from telebot import TeleBot, apihelper
 from telebot.storage import StateMemoryStorage
 from apps.bot.query import query_text
 from apps.bot.logger import logger  # Import logger from the new module
+from apps.bot.handlers.callback import handle_callback_query
 
 # Log a message to indicate the bot is starting
 logger.info("Starting bot...")
@@ -54,15 +59,18 @@ def register_handlers(bot: TeleBot):
     )
 
 
+register_handlers(bot)
+logger.info("Handlers registered")
+
+
 def handle_message_listener(messages, bot):
     for message in messages:
         handle_message(message, bot)
+        logger.info(f"Message from {message.from_user.id} handled")
 
 
 bot.set_update_listener(lambda messages: handle_message_listener(messages, bot))
-
-register_handlers(bot)
-logger.info("Handlers registered")
+logger.info("Update listener set")
 
 # Inline query
 bot.register_inline_handler(
@@ -82,7 +90,6 @@ logger.info("Custom filters registered")
 
 def run():
     retry_delay = 1  # Initial delay in seconds
-    max_retries = 5  # Maximum number of retries
 
     while True:
         try:
