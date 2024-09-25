@@ -5,7 +5,7 @@ def get_main_buttons():
     buttons = [
         [KeyboardButton("Concert")],
         [KeyboardButton("Donate")],
-        [KeyboardButton("My Bilets")],
+        [KeyboardButton("My Tickets")],
         [KeyboardButton("Info")],
         [KeyboardButton("Language")],
     ]

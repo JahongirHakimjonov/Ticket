@@ -26,11 +26,6 @@ PAGES = [
                 "icon": "person_add",
                 "link": reverse_lazy("admin:ticket_botusers_changelist"),
             },
-            {
-                "title": _("Guruhlar"),
-                "icon": "diversity_3",
-                "link": reverse_lazy("admin:auth_group_changelist"),
-            },
         ],
     },
     {

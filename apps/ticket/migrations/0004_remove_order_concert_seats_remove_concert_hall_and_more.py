@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("ticket", "0003_rename_start_date_concert_date_and_more"),
     ]

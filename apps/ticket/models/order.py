@@ -17,9 +17,10 @@ class Order(AbstractBaseModel):
     total_price = models.DecimalField(
         max_digits=100, decimal_places=2, default=0.00, verbose_name=_("Jami narx")
     )
-    created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name=_("Yaratilgan sana")
-    )
+    full_name = models.CharField(max_length=255, verbose_name=_("Ism va Familiya"))
+    phone = models.CharField(max_length=20, verbose_name=_("Telefon raqam"))
+    is_confirmed = models.BooleanField(default=False, verbose_name=_("Tasdiqlandi"))
+    is_paid = models.BooleanField(default=False, verbose_name=_("To'landi"))
 
     def __str__(self):
         return f"Order for {self.user} - {self.concert.name}, Total: {self.total_price}"

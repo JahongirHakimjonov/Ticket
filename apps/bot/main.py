@@ -1,4 +1,9 @@
 import os
+import time
+
+import requests
+
+from apps.bot.handlers.callback import handle_callback_query
 
 # Set the DJANGO_SETTINGS_MODULE environment variable
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")  # noqa
@@ -11,13 +16,13 @@ django.setup()  # noqa
 # Django
 from apps.bot.conf import TOKEN
 from apps.bot.filters import AdminFilter
-from apps.bot.handlers.admin import admin_user
 from apps.bot.handlers.user import any_user
 from apps.bot.middlewares import antispam_func
 from apps.bot.handlers.home import handle_message
 from apps.bot.middlewares import set_language
 from apps.bot.utils.database import Database
 from telebot import TeleBot, apihelper
+from telebot.storage import StateMemoryStorage
 from apps.bot.query import query_text
 from apps.bot.logger import logger  # Import logger from the new module
 
@@ -31,22 +36,32 @@ db = Database()
 apihelper.ENABLE_MIDDLEWARE = True
 logger.info("Middlewares enabled")
 
+# Initialize the bot with state storage
+state_storage = StateMemoryStorage()
+
 # I recommend increasing num_threads
-bot = TeleBot(TOKEN, num_threads=5)
+bot = TeleBot(TOKEN, num_threads=10, state_storage=state_storage)
 logger.info("Bot created")
 
 
-def register_handlers():
-    bot.register_message_handler(
-        admin_user, commands=["start"], admin=True, pass_bot=True
-    )
+def register_handlers(bot: TeleBot):
     bot.register_message_handler(
         any_user, commands=["start"], admin=False, pass_bot=True
     )
     bot.register_message_handler(handle_message, content_types=["text"], pass_bot=True)
+    bot.register_callback_query_handler(
+        lambda call: handle_callback_query(call, bot), lambda call: True
+    )
 
 
-register_handlers()
+def handle_message_listener(messages, bot):
+    for message in messages:
+        handle_message(message, bot)
+
+
+bot.set_update_listener(lambda messages: handle_message_listener(messages, bot))
+
+register_handlers(bot)
 logger.info("Handlers registered")
 
 # Inline query
@@ -66,8 +81,28 @@ logger.info("Custom filters registered")
 
 
 def run():
-    bot.infinity_polling()
-    logger.info("Bot stopped")
+    retry_delay = 1  # Initial delay in seconds
+    max_retries = 5  # Maximum number of retries
+
+    while True:
+        try:
+            bot.infinity_polling(timeout=60, long_polling_timeout=60)
+        except requests.exceptions.ReadTimeout:
+            logger.error("Read timeout occurred. Retrying...")
+        except requests.exceptions.ConnectTimeout:
+            logger.error("Connection timeout occurred. Retrying in 15 seconds...")
+            time.sleep(15)
+        except requests.exceptions.RequestException as e:
+            logger.error(
+                f"Network error occurred: {e}. Retrying in {retry_delay} seconds..."
+            )
+            time.sleep(retry_delay)
+            retry_delay = min(
+                retry_delay * 2, 60
+            )  # Exponential backoff, max 60 seconds
+        except Exception as e:
+            logger.error(f"An unexpected error occurred: {e}")
+            raise
 
 
 if __name__ == "__main__":

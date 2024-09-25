@@ -1,6 +1,7 @@
-from telebot.types import Message
-from telebot import TeleBot
 import time
+
+from telebot import TeleBot
+from telebot.types import Message
 
 DATA = {}
 
