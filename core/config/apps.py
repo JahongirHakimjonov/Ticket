@@ -10,6 +10,7 @@ THIRD_PARTY_APPS = [
     "django_ckeditor_5",
     "corsheaders",
     "rosetta",
+    "payme",
     "rest_framework",
     "drf_spectacular",
     "drf_spectacular_sidecar",

@@ -32,7 +32,7 @@ def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
         inline_markup.add(
             InlineKeyboardButton("Select Payment", callback_data="select_payment")
         )
-        inline_markup.add(InlineKeyboardButton("PayMe", callback_data="payme"))
+        inline_markup.add(InlineKeyboardButton("PayMe", callback_data=f"payme_{order.id}"))
 
         # Update the message with the new inline keyboard
         bot.edit_message_reply_markup(

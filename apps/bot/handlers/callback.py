@@ -28,7 +28,7 @@ def handle_callback_query(call: CallbackQuery, bot: TeleBot):
     elif call.data == "select_payment":
         bot.answer_callback_query(call.id, "To'lov turini tanlang")
         logger.info(f"User {call.from_user.id} selected a payment method.")
-    elif call.data == "payme":
+    elif call.data.startswith("payme_"):
         handle_payme_callback(call, bot)
         logger.info(f"User {call.from_user.id} selected PayMe.")
     elif call.data == "payme_checked":

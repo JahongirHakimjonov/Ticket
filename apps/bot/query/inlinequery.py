@@ -20,7 +20,7 @@ def query_text(bot, query):
             keyboard = InlineKeyboardMarkup()
             button = InlineKeyboardButton(
                 text="Sotib olish",
-                url=f"https://t.me/shinzo_family_bot?start={concert.id}",
+                url=f"{os.getenv('BOT_URL')}?start={concert.id}",
             )
             keyboard.add(button)
             article_result = InlineQueryResultArticle(
