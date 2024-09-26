@@ -3,10 +3,10 @@ import os
 from dataclasses import dataclass
 from decimal import Decimal
 
-PAYME_ID = os.getenv('PAYME_ID')
-PAYME_ACCOUNT = os.getenv('PAYME_ACCOUNT')
-PAYME_CALL_BACK_URL = os.getenv('PAYME_CALL_BACK_URL')
-PAYME_URL = os.getenv('PAYME_URL')
+PAYME_ID = os.getenv("PAYME_ID")
+PAYME_ACCOUNT = os.getenv("PAYME_ACCOUNT")
+PAYME_CALL_BACK_URL = os.getenv("PAYME_CALL_BACK_URL")
+PAYME_URL = os.getenv("PAYME_URL")
 
 
 @dataclass
@@ -30,6 +30,7 @@ class GeneratePayLink:
     -------------------------
     https://developer.help.paycom.uz/initsializatsiya-platezhey/
     """
+
     order_id: str
     amount: Decimal
     callback_url: str = None
@@ -39,7 +40,9 @@ class GeneratePayLink:
         GeneratePayLink for each order.
         """
         generated_pay_link: str = "{payme_url}/{encode_params}"
-        params: str = 'm={payme_id};ac.{payme_account}={order_id};a={amount};c={call_back_url}'
+        params: str = (
+            "m={payme_id};ac.{payme_account}={order_id};a={amount};c={call_back_url}"
+        )
 
         if self.callback_url:
             redirect_url = self.callback_url
@@ -51,12 +54,11 @@ class GeneratePayLink:
             payme_account=PAYME_ACCOUNT,
             order_id=self.order_id,
             amount=self.amount,
-            call_back_url=redirect_url
+            call_back_url=redirect_url,
         )
         encode_params = base64.b64encode(params.encode("utf-8"))
         return generated_pay_link.format(
-            payme_url=PAYME_URL,
-            encode_params=str(encode_params, 'utf-8')
+            payme_url=PAYME_URL, encode_params=str(encode_params, "utf-8")
         )
 
     @staticmethod
