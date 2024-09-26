@@ -20,7 +20,7 @@ class Payment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    amount = models.DecimalField(decimal_places=2, max_digits=10)
+    amount = models.DecimalField(decimal_places=2, max_digits=50)
     message = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:

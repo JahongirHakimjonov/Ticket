@@ -8,6 +8,7 @@ from telebot.types import (
 
 from apps.bot.logger import logger
 from apps.bot.utils.link import GeneratePayLink
+from apps.payment.models import Payment
 from apps.ticket.models import Info, Order
 
 # Initialize the bot with state storage
@@ -18,6 +19,12 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
     try:
         # Create new inline keyboard with "Select Payment" and "✅PayMe" buttons
         order = Order.objects.get(id=call.data.split("_")[1])
+        Payment.objects.create(
+            order_id=order,
+            status="PROCESSING",
+            amount=order.total_price,
+            transaction_id=order.id,
+        )
         inline_markup = InlineKeyboardMarkup()
         inline = InlineKeyboardMarkup()
         inline_markup.add(
@@ -28,7 +35,7 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
         )
         pay_link = GeneratePayLink(
             order_id=order.id,
-            amount=GeneratePayLink.to_tiyin(order.total_price),
+            amount=order.total_price,
         ).generate_link()
         inline.add(InlineKeyboardButton("Select Payment", url=pay_link))
 
