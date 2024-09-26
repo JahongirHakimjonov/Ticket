@@ -12,8 +12,6 @@ import django
 
 django.setup()
 
-# Rest of your code...
-
 # Django
 import time
 
@@ -62,15 +60,14 @@ def register_handlers(bot: TeleBot):
 register_handlers(bot)
 logger.info("Handlers registered")
 
+# def handle_message_listener(messages, bot):
+#     for message in messages:
+#         handle_message(message, bot)
+#         logger.info(f"Message from {message.from_user.id} handled")
 
-def handle_message_listener(messages, bot):
-    for message in messages:
-        handle_message(message, bot)
-        logger.info(f"Message from {message.from_user.id} handled")
 
-
-bot.set_update_listener(lambda messages: handle_message_listener(messages, bot))
-logger.info("Update listener set")
+# bot.set_update_listener(lambda messages: handle_message_listener(messages, bot))
+# logger.info("Update listener set")
 
 # Inline query
 bot.register_inline_handler(

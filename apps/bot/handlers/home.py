@@ -9,11 +9,9 @@ from apps.bot.handlers.concert import handle_concert
 from apps.bot.handlers.donate import handle_donate
 from apps.bot.handlers.info import handle_info
 from apps.bot.handlers.language import handle_language
-from apps.bot.handlers.order import handle_full_name, handle_phone
 from apps.bot.handlers.selection_date import handle_date_selection
 from apps.bot.handlers.ticket import handle_ticket
 from apps.bot.keyboard import get_main_buttons
-from apps.bot.states.order_state import Order
 
 
 def is_valid_date(date_str):
@@ -25,7 +23,7 @@ def is_valid_date(date_str):
 
 
 def handle_message(message: Message, bot: TeleBot):
-    state = bot.get_state(message.from_user.id, message.chat.id)
+    # state = bot.get_state(message.from_user.id, message.chat.id)
     if message.text == "Concert":
         handle_concert(message, bot)
     elif message.text == "Donate":
@@ -50,10 +48,10 @@ def handle_message(message: Message, bot: TeleBot):
             "Welcome to the main menu!",
             reply_markup=get_main_buttons(),
         )
-    elif state == Order.full_name:
-        handle_full_name(message, bot)
-    elif state == Order.phone:
-        handle_phone(message, bot)
+    # elif state == Order.full_name:
+    #     handle_full_name(message, bot)
+    # elif state == Order.phone:
+    #     handle_phone(message, bot)
     else:
         bot.send_message(
             message.chat.id,

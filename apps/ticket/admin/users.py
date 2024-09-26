@@ -12,13 +12,10 @@ class BotUsersAdmin(ModelAdmin):
         "username",
         "phone",
         "language_code",
-        "is_active",
-        "role",
     )
     list_filter = ("is_active", "role", "language_code")
     search_fields = ("first_name", "last_name", "phone", "username")
     ordering = ("-created_at",)
-    list_editable = ("is_active", "role")
     actions = ["make_active", "make_inactive"]
 
     def make_active(self, request, queryset):  # noqa

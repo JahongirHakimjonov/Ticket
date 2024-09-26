@@ -13,7 +13,7 @@ class Donate(AbstractBaseModel):
     )
 
     def __str__(self):
-        return self.user
+        return f"{self.user.first_name} - {self.amount}"
 
     class Meta:
         db_table = "donate"

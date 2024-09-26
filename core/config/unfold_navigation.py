@@ -41,18 +41,7 @@ PAGES = [
     },
     {
         "seperator": True,
-        "title": _("Zallar"),
-        "items": [
-            {
-                "title": _("O'rindiqlar"),
-                "icon": "airline_seat_recline_normal",
-                "link": reverse_lazy("admin:ticket_seat_changelist"),
-            },
-        ],
-    },
-    {
-        "seperator": True,
-        "title": _("Buyurtmalar"),
+        "title": _("Tushumlar"),
         "items": [
             {
                 "title": _("Buyurtmalar"),

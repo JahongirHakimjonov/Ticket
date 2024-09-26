@@ -2,6 +2,7 @@ from io import BytesIO
 
 from PIL import Image
 from django.core.files.base import ContentFile
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -27,7 +28,11 @@ class Concert(AbstractBaseModel):
     location_yandex_maps = models.URLField(
         max_length=255, verbose_name=_("Yandex Maps manzili")
     )
-    photo = models.ImageField(upload_to="concerts", verbose_name=_("Rasm"))
+    photo = models.ImageField(
+        upload_to="concerts",
+        verbose_name=_("Rasm"),
+        validators=[FileExtensionValidator(allowed_extensions=["jpg", "png"])],
+    )
     thumbnail = models.ImageField(
         upload_to="concerts/thumbnail",
         verbose_name=_("Mini rasm"),

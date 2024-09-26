@@ -89,7 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "uz"
+LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "Asia/Tashkent"
 
@@ -100,12 +100,11 @@ USE_TZ = True
 LANGUAGES = (
     ("uz", _("O'zbekcha")),
     ("ru", _("Русский")),
-    ("en", _("English")),
 )
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 
-MODELTRANSLATION_LANGUAGES = ("uz", "ru", "en")
+MODELTRANSLATION_LANGUAGES = ("uz", "ru")
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = "uz"
 

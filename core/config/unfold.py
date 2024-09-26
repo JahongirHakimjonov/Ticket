@@ -1,7 +1,7 @@
 from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
-# from django.utils.translation import gettext_lazy as _
-# from django.urls import reverse_lazy
 from . import unfold_navigation as navigation
 
 UNFOLD = {
@@ -9,15 +9,15 @@ UNFOLD = {
     "SITE_HEADER": "Django Default",
     "SITE_URL": "/",
     "SITE_ICON": {
-        "light": lambda request: static("images/favicon.ico"),
-        "dark": lambda request: static("images/favicon.ico"),
+        "light": lambda request: static("images/felix.png"),
+        "dark": lambda request: static("images/felix.png"),
     },
     "SITE_FAVICONS": [
         {
             "rel": "icon",
             "sizes": "32x32",
             "type": "image/svg+xml",
-            "href": lambda request: static("images/favicon.ico"),
+            "href": lambda request: static("images/felix.png"),
         },
     ],
     "SITE_SYMBOL": "speed",
@@ -57,7 +57,6 @@ UNFOLD = {
             "flags": {
                 "uz": "🇺🇿",
                 "ru": "🇷🇺",
-                "en": "🇬🇧",
             },
         },
     },
@@ -66,4 +65,22 @@ UNFOLD = {
         "show_all_applications": True,
         "navigation": navigation.PAGES,
     },
+    "TABS": [
+        {
+            "models": [
+                "ticket.concert",
+                "ticket.seat",
+            ],
+            "items": [
+                {
+                    "title": _("Konsertlar"),
+                    "link": reverse_lazy("admin:ticket_concert_changelist"),
+                },
+                {
+                    "title": _("O'rindiqlar"),
+                    "link": reverse_lazy("admin:ticket_seat_changelist"),
+                },
+            ],
+        },
+    ],
 }

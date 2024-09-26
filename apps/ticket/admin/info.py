@@ -1,13 +1,15 @@
 from django.contrib import admin
+from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.admin import ModelAdmin
 
 from apps.ticket.models import Info
 
 
 @admin.register(Info)
-class InfoAdmin(ModelAdmin):
-    list_display = ("id", "name", "created_at")
+class InfoAdmin(ModelAdmin, TabbedTranslationAdmin):
+    list_display = ("id", "name", "created_at", "is_active")
     list_filter = ("created_at",)
+    list_editable = ("is_active",)
     actions = ["make_active", "make_inactive"]
 
     def make_active(self, request, queryset):  # noqa

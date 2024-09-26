@@ -6,9 +6,7 @@ from telebot.types import (
     CallbackQuery,
 )
 
-from apps.bot.handlers.home import handle_message
 from apps.bot.logger import logger
-from apps.bot.states.order_state import Order
 from apps.ticket.models import Info
 
 # Initialize the bot with state storage
@@ -43,8 +41,8 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
         bot.send_message(call.message.chat.id, "PayMe selected.", reply_markup=inline)
 
         # Set the state to Order.full_name
-        bot.set_state(call.from_user.id, Order.full_name, call.message.chat.id)
-        bot.send_message(call.message.chat.id, "Iltimos, to'liq ismingizni kiriting:")
+        # bot.set_state(call.from_user.id, Order.full_name, call.message.chat.id)
+        # bot.send_message(call.message.chat.id, "Iltimos, to'liq ismingizni kiriting:")
 
         bot.answer_callback_query(call.id, "PayMe selected.")
     except Exception as e:

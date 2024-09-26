@@ -1,5 +1,6 @@
-from telebot.types import Message
 from telebot import TeleBot
+from telebot.types import Message
+
 from apps.bot.states.order_state import Order
 
 

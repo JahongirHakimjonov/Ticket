@@ -1,7 +1,7 @@
 THIRD_PARTY_APPS = [
     # "jazzmin",
     "unfold",
-    # "unfold.contrib.filters",
+    "unfold.contrib.filters",
     # "unfold.contrib.forms",
     # "unfold.contrib.import_export",
     # "unfold.contrib.guardian",
@@ -27,4 +27,5 @@ DEFAULT_APPS = [
 PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
     "apps.ticket.apps.TicketConfig",
+    "apps.payment.apps.PaymentConfig",
 ]

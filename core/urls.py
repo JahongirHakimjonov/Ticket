@@ -6,6 +6,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path("", include("apps.shared.urls")),
+    path("", include("apps.ticket.urls")),
+    path("", include("apps.payment.urls")),
     path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
     path("rosetta/", include("rosetta.urls")),
