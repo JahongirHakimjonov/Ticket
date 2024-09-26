@@ -16,6 +16,8 @@ services:
       - envs/.env
     depends_on:
       - db
+    networks:
+      - ticket_net
 
   db:
     image: postgres:15-alpine
@@ -26,6 +28,8 @@ services:
       POSTGRES_PASSWORD: '1253'
     volumes:
       - pg_data:/var/lib/postgresql/data
+    networks:
+      - ticket_net
 
   bot:
     build:
@@ -37,7 +41,15 @@ services:
     depends_on:
       - web
     restart: on-failure
-
+    networks:
+      - ticket_net
 
 volumes:
   pg_data:
+
+networks:
+  ticket_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16

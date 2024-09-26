@@ -9,7 +9,7 @@ from apps.ticket.models import Seat
 
 class SeatInline(TabularInline):
     model = Seat
-    fields = ("is_active", "name_uz", "", "count", "price")
+    fields = ("is_active", "name_uz", "name_ru", "count", "price")
     extra = 1
 
 
