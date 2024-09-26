@@ -19,7 +19,7 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
     try:
         # Create new inline keyboard with "Select Payment" and "✅PayMe" buttons
         order = Order.objects.get(id=call.data.split("_")[1])
-        Payment.objects.create(
+        payment = Payment.objects.create(
             order_id=order,
             status="PROCESSING",
             amount=order.total_price,
@@ -34,8 +34,8 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
             InlineKeyboardButton("✅PayMe", callback_data="payme_checked")
         )
         pay_link = GeneratePayLink(
-            order_id=order.id,
-            amount=order.total_price,
+            order_id=payment.id,
+            amount=GeneratePayLink.to_sum(payment.amount * 100),
         ).generate_link()
         inline.add(InlineKeyboardButton("Select Payment", url=pay_link))
 
