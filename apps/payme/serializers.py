@@ -31,7 +31,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
         """
         if attrs.get("order_id") is not None:
             try:
-                order = Order.objects.get(order_id=attrs["order_id"]).last()
+                order = Order.objects.get(order_id=attrs["order_id"])
                 if order.amount != int(attrs["amount"]):
                     raise IncorrectAmount()
 
@@ -60,7 +60,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
         order_id: str -> Order Indentation.
         """
         try:
-            Order.objects.get(order_id=order_id).last()
+            Order.objects.get(order_id=order_id)
         except Order.DoesNotExist as error:
             logger.error("Order does not exist order_id: %s", order_id)
             raise PerformTransactionDoesNotExist() from error
