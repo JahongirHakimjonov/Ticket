@@ -11,6 +11,7 @@ class Donate(AbstractBaseModel):
     amount = models.DecimalField(
         max_digits=100, decimal_places=2, verbose_name=_("Summa")
     )
+    is_paid = models.BooleanField(default=False, verbose_name=_("To'landi"))
 
     def __str__(self):
         return f"{self.user.first_name} - {self.amount}"

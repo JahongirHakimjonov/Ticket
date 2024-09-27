@@ -25,7 +25,7 @@ RUN pip install flower
 #    chmod +x /start-flower
 
 # Update and install necessary packages
-RUN apt update && apt upgrade -y && apt install git -y
+RUN apt update && apt upgrade -y && apt install git -y && apt install -y gettext
 
 WORKDIR /app
 COPY . /app

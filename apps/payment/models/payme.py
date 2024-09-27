@@ -1,11 +1,15 @@
 from django.db import models
 
-from apps.payment.choices import PaymentChoices, PaymentMethodChoices
-from apps.ticket.models import Order
+from apps.payment.choices import (
+    PaymentChoices,
+    PaymentMethodChoices,
+    PaymentTypeChoices,
+)
+from apps.shared.models import AbstractBaseModel
 
 
-class Payment(models.Model):
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+class Payment(AbstractBaseModel):
+    order_id = models.CharField(max_length=255)
     status = models.CharField(
         choices=PaymentChoices.choices,
         default=PaymentChoices.PROCESSING,
@@ -17,8 +21,7 @@ class Payment(models.Model):
         choices=PaymentMethodChoices.choices,
         default=PaymentMethodChoices.PAYME,
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    type = models.CharField(max_length=100, choices=PaymentTypeChoices.choices)
 
     amount = models.IntegerField()
     message = models.TextField(blank=True, null=True)

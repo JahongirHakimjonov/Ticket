@@ -14,3 +14,8 @@ class PaymentMethodChoices(models.TextChoices):
     PAYME = "PAYME", _("Payme")
     OCTO = "OCTO", _("OCTO")
     CASH = "CASH", _("Cash")
+
+
+class PaymentTypeChoices(models.TextChoices):
+    DONATE = "DONATE", _("Donate")
+    ORDER = "ORDER", _("Order")

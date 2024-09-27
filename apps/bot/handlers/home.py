@@ -12,6 +12,9 @@ from apps.bot.handlers.language import handle_language
 from apps.bot.handlers.selection_date import handle_date_selection
 from apps.bot.handlers.ticket import handle_ticket
 from apps.bot.keyboard import get_main_buttons
+from django.utils.translation import activate, gettext as _
+
+from apps.bot.utils.language import set_language_code
 
 
 def is_valid_date(date_str):
@@ -23,29 +26,30 @@ def is_valid_date(date_str):
 
 
 def handle_message(message: Message, bot: TeleBot):
+    activate(set_language_code(message.from_user.id))
     # state = bot.get_state(message.from_user.id, message.chat.id)
-    if message.text == "Concert":
+    if message.text == _("Concert"):
         handle_concert(message, bot)
-    elif message.text == "Donate":
+    elif message.text == _("Donate"):
         handle_donate(message, bot)
-    elif message.text == "My Tickets":
+    elif message.text == _("My Tickets"):
         handle_ticket(message, bot)
-    elif message.text == "Info":
+    elif message.text == _("Info"):
         handle_info(message, bot)
-    elif message.text == "Language":
+    elif message.text == _("Language"):
         handle_language(message, bot)
-    elif message.text == "All":
+    elif message.text == _("All"):
         handle_date_selection(message, bot)
-    elif message.text == "All Tickets":
+    elif message.text == _("All Tickets"):
         handle_all_tickets(message, bot)
-    elif message.text == "Active Tickets":
+    elif message.text == _("Active Tickets"):
         handle_active_tickets(message, bot)
     elif is_valid_date(message.text):
         handle_date_selection(message, bot)
-    elif message.text == "Home":
+    elif message.text == _("Home"):
         bot.send_message(
             message.chat.id,
-            "Welcome to the main menu!",
+            _("Welcome to the main menu!"),
             reply_markup=get_main_buttons(),
         )
     # elif state == Order.full_name:
@@ -55,6 +59,6 @@ def handle_message(message: Message, bot: TeleBot):
     else:
         bot.send_message(
             message.chat.id,
-            "I don't understand you, please use the buttons below",
+            _("I don't understand you, please use the buttons below"),
             reply_markup=get_main_buttons(),
         )

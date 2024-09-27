@@ -9,6 +9,7 @@ from telebot.types import (
 
 from apps.bot.logger import logger
 from apps.ticket.models import Concert
+from django.utils.translation import activate, gettext as _
 
 
 def query_text(bot, query):

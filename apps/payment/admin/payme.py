@@ -9,5 +9,9 @@ class PaymentAdmin(ModelAdmin):
     list_display = (
         "id",
         "amount",
+        "status",
+        "type",
         "created_at",
+        "order_id",
     )
+    list_filter = ("status", "type")

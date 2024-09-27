@@ -2,11 +2,14 @@ from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from apps.bot.logger import logger
+from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Seat
+from django.utils.translation import activate, gettext as _
 
 
 def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
     try:
+        activate(set_language_code(call.from_user.id))
         concert_id = int(call.data.split("_")[2])
         logger.info(f"Concert ID: {concert_id}")
         seats = Seat.objects.filter(concert_id=concert_id, is_active=True, count__gt=0)
@@ -17,7 +20,7 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
             for seat in seats:
                 inline_markup.add(
                     InlineKeyboardButton(
-                        f"{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}",
+                        _(f"{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"),
                         callback_data=f"select_seat_{seat.id}",
                     )
                 )
@@ -28,7 +31,10 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
                 reply_markup=inline_markup,
             )
         else:
-            bot.answer_callback_query(call.id, "No seats available for this concert.")
+            activate(set_language_code(call.from_user.id))
+            bot.answer_callback_query(
+                call.id, _("No seats available for this concert.")
+            )
     except Exception as e:
-        bot.answer_callback_query(call.id, "An error occurred.")
+        bot.answer_callback_query(call.id, _("An error occurred."))
         logger.error(f"Error while handling buy ticket callback: {e}")

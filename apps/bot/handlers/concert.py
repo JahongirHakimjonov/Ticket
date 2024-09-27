@@ -6,7 +6,9 @@ from telebot.types import (
     KeyboardButton,
     Message,
 )
+from django.utils.translation import activate, gettext as _
 
+from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert  # Import the Concert model
 
 
@@ -14,6 +16,7 @@ def handle_concert(message: Message, bot: TeleBot):
     concert_dates = (
         Concert.objects.filter(is_active=True).values_list("date", flat=True).distinct()
     )
+    activate(set_language_code(message.from_user.id))
     all_concerts = Concert.objects.filter(is_active=True)
     if all_concerts.exists():
         if len(all_concerts) == 1:
@@ -22,16 +25,19 @@ def handle_concert(message: Message, bot: TeleBot):
             bot.send_photo(
                 message.chat.id,
                 photo=concert_details.photo,
-                caption=f"{concert_details.name}\n\n{concert_details.title}\n\n"
-                f"Sana: {concert_details.date.strftime('%d.%m.%Y')}\nVaqti: {concert_details.time.strftime('%H:%M')}\n\n"
-                f"{concert_details.description}\n\n"
-                f"*📍Manzil:* {concert_details.address}\n\n"
-                f"[📍Google Xarita]({concert_details.location_google_maps})\n[📍Yandex Xarita]({concert_details.location_yandex_maps})\n\n"
-                f"*💸Narxlar:* {concert_details.min_price:,} UZS - {concert_details.max_price:,} UZS\n",
+                caption=_(
+                    f"{concert_details.name}\n\n{concert_details.title}\n\n"
+                    f"Sana: {concert_details.date.strftime('%d.%m.%Y')}\nVaqti: {concert_details.time.strftime('%H:%M')}\n\n"
+                    f"{concert_details.description}\n\n"
+                    f"*📍Manzil:* {concert_details.address}\n\n"
+                    f"[📍Google Xarita]({concert_details.location_google_maps})\n[📍Yandex Xarita]({concert_details.location_yandex_maps})\n\n"
+                    f"*💸Narxlar:* {concert_details.min_price:,} UZS - {concert_details.max_price:,} UZS\n"
+                ),
                 parse_mode="Markdown",
                 reply_markup=InlineKeyboardMarkup().add(
                     InlineKeyboardButton(
-                        "Buy Tickets", callback_data=f"buy_ticket_{concert_details.id}"
+                        _("Buy Tickets"),
+                        callback_data=f"buy_ticket_{concert_details.id}",
                     )
                 ),
             )
@@ -39,13 +45,13 @@ def handle_concert(message: Message, bot: TeleBot):
             # Inline button
             inline_markup = InlineKeyboardMarkup()
             inline_button = InlineKeyboardButton(
-                "Search Concerts", switch_inline_query_current_chat=""
+                _("Search Concerts"), switch_inline_query_current_chat=""
             )
 
             keyboard_markup = ReplyKeyboardMarkup(resize_keyboard=True)
 
             # Add the "All" button first
-            all_button = KeyboardButton("All")
+            all_button = KeyboardButton(_("All"))
             keyboard_markup.add(all_button)
 
             # Add the date buttons next
@@ -54,7 +60,7 @@ def handle_concert(message: Message, bot: TeleBot):
                 keyboard_markup.add(keyboard_button)
 
             # Add the "Home" button last
-            home_button = KeyboardButton("Home")
+            home_button = KeyboardButton(_("Home"))
             keyboard_markup.add(home_button)
 
             # Add the inline button
@@ -62,13 +68,13 @@ def handle_concert(message: Message, bot: TeleBot):
 
             bot.send_message(
                 message.chat.id,
-                "Please select a concert date or search for concerts:",
+                _("Please select a concert date or search for concerts:"),
                 reply_markup=inline_markup,
             )
             bot.send_message(
                 message.chat.id,
-                "Available concert dates:",
+                _("Available concert dates:"),
                 reply_markup=keyboard_markup,
             )
     else:
-        bot.send_message(message.chat.id, "No active concerts available.")
+        bot.send_message(message.chat.id, _("No active concerts available."))

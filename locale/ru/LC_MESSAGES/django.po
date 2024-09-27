@@ -8,180 +8,788 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 14:51+0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2024-09-27 14:53+0500\n"
+"PO-Revision-Date: 2024-09-27 14:54+0500\n"
+"Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
 
+#: apps/bot/handlers/active_ticket.py:17
+msgid "Sizda faol chiptalar mavjud emas."
+msgstr "У вас нет активных билетов."
 
-msgid "Title"
-msgstr "Заголовок"
+#: apps/bot/handlers/active_ticket.py:22 apps/bot/handlers/all_ticket.py:21
+msgid ""
+"Order ID: {order.id}\n"
+"Order Date: {order.concert.name}\n"
+"Order Details: {order.total_price:,}\n"
+msgstr ""
+"ID заказа: {order.id}\n"
+"Дата заказа: {order.concert.name}\n"
+"Детали заказа: {order.total_price:,}\n"
 
-msgid "Short Title"
-msgstr "Краткий заголовок"
+#: apps/bot/handlers/all_ticket.py:16
+msgid "Sizda hech qanday chipta mavjud emas."
+msgstr "У вас нет билетов."
 
-msgid "Description"
-msgstr "Описание"
+#: apps/bot/handlers/buy_ticket.py:24
+msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
+msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 
-msgid "Short Description"
-msgstr "Краткое описание"
+#: apps/bot/handlers/buy_ticket.py:36
+msgid "No seats available for this concert."
+msgstr "На этот концерт мест нет."
 
-msgid "Image"
-msgstr "Изображение"
+#: apps/bot/handlers/buy_ticket.py:38 apps/bot/handlers/payme.py:67
+#: apps/bot/handlers/select_count.py:51 apps/bot/handlers/select_seat.py:63
+#: apps/bot/handlers/select_seat.py:66 apps/bot/handlers/selection_date.py:66
+#: apps/bot/handlers/user.py:63
+msgid "An error occurred."
+msgstr "Произошла ошибка."
 
-msgid "Academic Hours"
-msgstr "Академические часы"
+#: apps/bot/handlers/callback.py:30
+msgid "Sonini tanlang"
+msgstr "Выберите номер"
 
-msgid "Education Services"
-msgstr "Образовательные услуги"
+#: apps/bot/handlers/callback.py:33
+msgid "To'lov turini tanlang"
+msgstr "Выберите тип оплаты"
 
-msgid "Name"
-msgstr "Имя"
+#: apps/bot/handlers/callback.py:39
+msgid "PayMe tanlandi."
+msgstr "Payme выбран."
 
-msgid "Education Subject Category"
-msgstr "Категория учебного предмета"
+#: apps/bot/handlers/callback.py:51
+msgid "Unknown action."
+msgstr "Неизвестное действие."
 
-msgid "Education Subject Categories"
-msgstr "Категории учебных предметов"
+#: apps/bot/handlers/concert.py:28
+#, python-brace-format
+msgid ""
+"{concert_details.name}\n"
+"\n"
+"{concert_details.title}\n"
+"\n"
+msgstr ""
 
-msgid "Full Name"
-msgstr "Полное имя"
+#: apps/bot/handlers/concert.py:37 apps/bot/handlers/selection_date.py:31
+#: apps/bot/handlers/selection_date.py:57 apps/bot/handlers/user.py:40
+msgid "Buy Tickets"
+msgstr "Покупка"
 
-msgid "Email"
-msgstr "Электронная почта"
+#: apps/bot/handlers/concert.py:45
+msgid "Search Concerts"
+msgstr "Поиск концертов"
 
-msgid "Phone"
-msgstr "Телефон"
+#: apps/bot/handlers/concert.py:51 apps/bot/handlers/home.py:41
+#: apps/bot/handlers/selection_date.py:14
+msgid "All"
+msgstr "Все"
 
-msgid "Problem"
-msgstr "Проблема"
-
-msgid "Category"
-msgstr "Категория"
-
-msgid "Video"
-msgstr "Видео"
-
-msgid "File"
-msgstr "Файл"
-
-msgid "Education Subject"
-msgstr "Учебный предмет"
-
-msgid "Education Subjects"
-msgstr "Учебные предметы"
-
-msgid "Logo"
-msgstr "Логотип"
-
-msgid "Address"
-msgstr "Адрес"
-
-msgid "Dekan"
-msgstr "Декан"
-
-msgid "Dekan Photo"
-msgstr "Фото декана"
-
-msgid "Faculty"
-msgstr "Факультет"
-
-msgid "Faculties"
-msgstr "Факультеты"
-
-msgid "Files"
-msgstr "Файлы"
-
-msgid "Gallery"
-msgstr "Галерея"
-
-msgid "Subtitle"
-msgstr "Подзаголовок"
-
-msgid "Location"
-msgstr "Местоположение"
-
-msgid "Icon"
-msgstr "Иконка"
-
-msgid "Instagram"
-msgstr "Инстаграм"
-
-msgid "Facebook"
-msgstr "Фейсбук"
-
-msgid "Twitter"
-msgstr "Твиттер"
-
-msgid "Linkedin"
-msgstr "Линкедин"
-
-msgid "Youtube"
-msgstr "Ютуб"
-
-msgid "Telegram"
-msgstr "Телеграм"
-
+#: apps/bot/handlers/concert.py:60 apps/bot/handlers/home.py:49
+#: apps/bot/handlers/ticket.py:13
 msgid "Home"
 msgstr "Главная"
 
-msgid "News"
-msgstr "Новости"
+#: apps/bot/handlers/concert.py:68
+msgid "Please select a concert date or search for concerts:"
+msgstr "Пожалуйста, выберите дату концерта или выполните поиск концертов:"
 
-msgid "Projects"
-msgstr "Проекты"
+#: apps/bot/handlers/concert.py:73
+msgid "Available concert dates:"
+msgstr "Доступные даты концертов:"
 
-msgid "PTIK Story"
-msgstr "История PTIK"
+#: apps/bot/handlers/concert.py:77
+msgid "No active concerts available."
+msgstr "Нет доступных активных концертов."
 
-msgid "PTIK Stories"
-msgstr "Истории PTIK"
+#: apps/bot/handlers/donate.py:27
+msgid "Cancel"
+msgstr "Отмена"
 
-msgid "Scientific Base"
-msgstr "Научная база"
+#: apps/bot/handlers/donate.py:31
+msgid "Select an amount to donate:"
+msgstr "Выберите сумму пожертвования:"
 
-msgid "Subject"
-msgstr "Тема"
+#: apps/bot/handlers/donate.py:64
+#, python-brace-format
+msgid ""
+"Siz bizga {amount} so'm mablag'ni jo'natdingiz. Rahmat!\n"
+"Tugmani bosing va to'lovni amalga oshiring."
+msgstr ""
+"Вы отправили нам {amount}. Спасибо!\n"
+"Нажмите кнопку и произведите оплату."
 
-msgid "Message"
-msgstr "Сообщение"
+#: apps/bot/handlers/home.py:31 apps/bot/keyboard/home.py:7
+msgid "Concert"
+msgstr "Концерт"
 
-msgid "Videos"
-msgstr "Видео"
+#: apps/bot/handlers/home.py:33 apps/bot/keyboard/home.py:8
+#: apps/payment/choices/payme.py:20
+msgid "Donate"
+msgstr "Донат"
 
-msgid "email address"
-msgstr "Адрес электронной почты"
+#: apps/bot/handlers/home.py:35 apps/bot/keyboard/home.py:9
+msgid "My Tickets"
+msgstr "Мои билеты"
 
-msgid "The groups this user belongs to. A user will get all permissions granted to each of their groups."
-msgstr "Группы, к которым принадлежит этот пользователь. Пользователь получит все разрешения, предоставленные каждой из их групп."
+#: apps/bot/handlers/home.py:37 apps/bot/keyboard/home.py:10
+msgid "Info"
+msgstr "О нас"
 
-msgid "groups"
-msgstr "группы"
+#: apps/bot/handlers/home.py:39 apps/bot/keyboard/home.py:11
+msgid "Language"
+msgstr "Выбор языка"
 
-msgid "Specific permissions for this user."
-msgstr "Специальные разрешения для этого пользователя."
+#: apps/bot/handlers/home.py:43 apps/bot/handlers/ticket.py:12
+msgid "All Tickets"
+msgstr "Все билеты"
 
-msgid "user permissions"
-msgstr "разрешения пользователя"
+#: apps/bot/handlers/home.py:45 apps/bot/handlers/ticket.py:11
+msgid "Active Tickets"
+msgstr "Активные билеты"
 
-msgid "user"
-msgstr "пользователь"
+#: apps/bot/handlers/home.py:52
+msgid "Welcome to the main menu!"
+msgstr "Добро пожаловать в главное меню!"
 
-msgid "users"
-msgstr "пользователи"
+#: apps/bot/handlers/home.py:62
+msgid "I don't understand you, please use the buttons below"
+msgstr "Я вас не понимаю, воспользуйтесь кнопками ниже"
 
-msgid "Russia"
-msgstr "Россия"
+#: apps/bot/handlers/info.py:13
+msgid "Hozircha ma'lumotlar mavjud emas"
+msgstr "Данных пока нет"
 
-msgid "English"
-msgstr "Английский"
+#: apps/bot/handlers/language.py:38
+msgid "Language updated successfully!"
+msgstr "Язык успешно обновлен!"
 
-msgid "Uzbek"
-msgstr "Узбекский"
+#: apps/bot/handlers/order.py:14
+#, python-brace-format
+msgid "Rahmat, {full_name}. Endi telefon raqamingizni kiriting:"
+msgstr "Спасибо, {full_name}. Теперь введите свой номер телефона:"
+
+#: apps/bot/handlers/order.py:24
+#, python-brace-format
+msgid "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
+msgstr "Спасибо, ваш номер телефона: {phone}. Ваш заказ принят."
+
+#: apps/bot/handlers/payme.py:37 apps/bot/handlers/payme.py:46
+#: apps/bot/handlers/select_count.py:36
+msgid "Select Payment"
+msgstr "Оплатить"
+
+#: apps/bot/handlers/payme.py:57
+#| msgid ""
+#| "Sizning buyurtmangiz qabul qilindi, iltimos, to'lovni amalga oshiring.\n"
+#| "Operator bilan bog'lanish uchun 👉 {info.username}\n"
+#| "Telefon: {info.phone}"
+msgid ""
+"Sizning buyurtmangiz qabul qilindi,\bBuyurtmaning umumiy summasi {order.total_price:,} iltimos, to'lovni amalga oshiring.\n"
+"Operator bilan bog'lanish uchun 👉 {info.username}\n"
+"Telefon: {info.phone}"
+msgstr ""
+"Ваш заказ принят. Общая сумма заказа — {order.total_price:,}. Произведите оплату.\n"
+"Для связи с оператором 👉 {info.username}\n"
+"Телефон: {info.phone}"
+
+#: apps/bot/handlers/payme.py:59 apps/bot/handlers/payme.py:65
+msgid "Payme selected."
+msgstr "Выбран Payme."
+
+#: apps/bot/handlers/select_count.py:49
+#, python-brace-format
+msgid "{count} tickets selected."
+msgstr "{count} выбрано билетов"
+
+#: apps/bot/handlers/select_seat.py:22
+msgid "Select Quantity"
+msgstr "Выберите количество"
+
+#: apps/bot/handlers/select_seat.py:42
+msgid "Back"
+msgstr "Назад"
+
+#: apps/bot/handlers/select_seat.py:53
+msgid "No changes to update."
+msgstr "Никаких изменений для обновления."
+
+#: apps/bot/handlers/select_seat.py:57
+msgid ""
+"Bad Request: query is too old and response timeout expired or query ID is "
+"invalid"
+msgstr ""
+"Неправильный запрос: запрос слишком старый и истекло время ожидания ответа "
+"или идентификатор запроса недействителен"
+
+#: apps/bot/handlers/select_seat.py:60
+msgid "This action took too long. Please try again."
+msgstr "Это действие заняло слишком много времени. Попробуйте еще раз."
+
+#: apps/bot/handlers/selection_date.py:22
+#: apps/bot/handlers/selection_date.py:48 apps/bot/handlers/user.py:31
+#, python-brace-format
+msgid ""
+"{concert.name}\n"
+"\n"
+"{concert.title}\n"
+"\n"
+msgstr ""
+
+#: apps/bot/handlers/selection_date.py:37
+#: apps/bot/handlers/selection_date.py:63
+msgid "No active concerts found for this date."
+msgstr "На эту дату активных концертов не найдено."
+
+#: apps/bot/handlers/ticket.py:17
+msgid "Kerakli bo'limni tanlang:"
+msgstr "Выберите нужный раздел:"
+
+#: apps/bot/handlers/user.py:45
+msgid "This concert is not active."
+msgstr "Этот концерт неактивен."
+
+#: apps/bot/handlers/user.py:57
+msgid "Welcome to the bot! Use the inline keyboard to search for concerts."
+msgstr ""
+"Добро пожаловать в бот! Используйте встроенную клавиатуру для поиска "
+"концертов."
+
+#: apps/bot/handlers/user.py:61
+msgid "Concert not found."
+msgstr "Концерт не найден."
+
+#: apps/bot/middlewares/antiflood_middleware.py:18
+msgid "You are making request too often"
+msgstr "Вы делаете запрос слишком часто"
+
+#: apps/payme/models.py:16
+msgid "Transaction ID"
+msgstr ""
+
+#: apps/payme/models.py:17
+msgid "Order ID"
+msgstr ""
+
+#: apps/payme/models.py:18 apps/payme/models.py:57
+msgid "Amount"
+msgstr ""
+
+#: apps/payme/models.py:19
+msgid "Time"
+msgstr ""
+
+#: apps/payme/models.py:20
+msgid "Perform Time"
+msgstr ""
+
+#: apps/payme/models.py:21
+msgid "Cancel Time"
+msgstr ""
+
+#: apps/payme/models.py:22
+msgid "State"
+msgstr ""
+
+#: apps/payme/models.py:23
+msgid "Reason"
+msgstr ""
+
+#: apps/payme/models.py:24
+msgid "Created At MS"
+msgstr ""
+
+#: apps/payme/models.py:25 apps/payme/models.py:58
+msgid "Created At"
+msgstr ""
+
+#: apps/payme/models.py:26 apps/payme/models.py:59
+msgid "Updated At"
+msgstr ""
+
+#: apps/payme/models.py:32
+msgid "Merchant Transaction"
+msgstr ""
+
+#: apps/payme/models.py:33
+msgid "Merchant Transactions"
+msgstr ""
+
+#: apps/payme/models.py:67 apps/payment/choices/payme.py:21
+msgid "Order"
+msgstr ""
+
+#: apps/payme/models.py:68
+msgid "Orders"
+msgstr ""
+
+#: apps/payment/choices/payme.py:6
+msgid "Processing"
+msgstr ""
+
+#: apps/payment/choices/payme.py:7
+msgid "Completed"
+msgstr ""
+
+#: apps/payment/choices/payme.py:8
+msgid "Failed"
+msgstr ""
+
+#: apps/payment/choices/payme.py:9
+msgid "Cancelled"
+msgstr ""
+
+#: apps/payment/choices/payme.py:13
+msgid "Click"
+msgstr ""
+
+#: apps/payment/choices/payme.py:14 core/config/unfold_navigation.py:60
+msgid "Payme"
+msgstr ""
+
+#: apps/payment/choices/payme.py:15
+msgid "OCTO"
+msgstr ""
+
+#: apps/payment/choices/payme.py:16
+msgid "Cash"
+msgstr ""
+
+#: apps/shared/models.py:8
+msgid "Yaratilgan vaqti"
+msgstr ""
+
+#: apps/shared/models.py:11
+msgid "Yangilangan vaqti"
+msgstr ""
+
+#: apps/shared/models.py:13
+msgid "Aktivmi"
+msgstr ""
+
+#: apps/ticket/filters/concert.py:8 apps/ticket/models/concert.py:49
+#: core/config/unfold.py:76 core/config/unfold_navigation.py:33
+#: core/config/unfold_navigation.py:36
+msgid "Konsertlar"
+msgstr ""
+
+#: apps/ticket/models/concert.py:13 apps/ticket/models/info.py:8
+#: apps/ticket/models/seat.py:9
+msgid "Nomi"
+msgstr ""
+
+#: apps/ticket/models/concert.py:14
+msgid "Sarlavha"
+msgstr ""
+
+#: apps/ticket/models/concert.py:15 apps/ticket/models/info.py:9
+msgid "Tavsif"
+msgstr ""
+
+#: apps/ticket/models/concert.py:16
+msgid "Sanasi"
+msgstr ""
+
+#: apps/ticket/models/concert.py:17
+msgid "Vaqt"
+msgstr ""
+
+#: apps/ticket/models/concert.py:19
+msgid "Eng arzon narx"
+msgstr ""
+
+#: apps/ticket/models/concert.py:22
+msgid "Eng qimmat narx"
+msgstr ""
+
+#: apps/ticket/models/concert.py:24 apps/ticket/models/info.py:14
+msgid "Manzil"
+msgstr ""
+
+#: apps/ticket/models/concert.py:26
+msgid "Google Maps manzili"
+msgstr ""
+
+#: apps/ticket/models/concert.py:29
+msgid "Yandex Maps manzili"
+msgstr ""
+
+#: apps/ticket/models/concert.py:33
+msgid "Rasm"
+msgstr ""
+
+#: apps/ticket/models/concert.py:38
+msgid "Mini rasm"
+msgstr ""
+
+#: apps/ticket/models/concert.py:48 apps/ticket/models/order.py:13
+msgid "Konsert"
+msgstr ""
+
+#: apps/ticket/models/donate.py:9 apps/ticket/models/order.py:10
+#: apps/ticket/models/users.py:11
+msgid "Foydalanuvchi"
+msgstr ""
+
+#: apps/ticket/models/donate.py:12
+msgid "Summa"
+msgstr ""
+
+#: apps/ticket/models/donate.py:14 apps/ticket/models/order.py:23
+msgid "To'landi"
+msgstr ""
+
+#: apps/ticket/models/donate.py:21 core/config/unfold_navigation.py:52
+msgid "Xayriya"
+msgstr ""
+
+#: apps/ticket/models/donate.py:22
+msgid "Xayriyalar"
+msgstr ""
+
+#: apps/ticket/models/info.py:10 apps/ticket/models/order.py:21
+#: apps/ticket/models/users.py:33
+#, fuzzy
+#| msgid "Telegram"
+msgid "Telefon raqam"
+msgstr "Телеграм"
+
+#: apps/ticket/models/info.py:11
+#, fuzzy
+#| msgid "Telegram"
+msgid "Telegram username"
+msgstr "Телеграм"
+
+#: apps/ticket/models/info.py:12
+msgid "Email"
+msgstr "Электронная почта"
+
+#: apps/ticket/models/info.py:13
+msgid "Lokatsiya"
+msgstr ""
+
+#: apps/ticket/models/info.py:21
+msgid "Ma'lumot"
+msgstr ""
+
+#: apps/ticket/models/info.py:22 core/config/unfold_navigation.py:76
+#: core/config/unfold_navigation.py:79
+msgid "Ma'lumotlar"
+msgstr ""
+
+#: apps/ticket/models/order.py:15 apps/ticket/models/seat.py:20
+msgid "Joy"
+msgstr ""
+
+#: apps/ticket/models/order.py:16
+msgid "Soni"
+msgstr ""
+
+#: apps/ticket/models/order.py:18
+msgid "Jami narx"
+msgstr ""
+
+#: apps/ticket/models/order.py:20
+msgid "Ism va Familiya"
+msgstr ""
+
+#: apps/ticket/models/order.py:22
+msgid "Tasdiqlandi"
+msgstr ""
+
+#: apps/ticket/models/order.py:31
+msgid "Requested number of seats exceeds available seats."
+msgstr ""
+
+#: apps/ticket/models/order.py:40
+msgid "Buyurtma"
+msgstr ""
+
+#: apps/ticket/models/order.py:41 core/config/unfold_navigation.py:47
+#: core/config/unfold_navigation.py:68
+msgid "Buyurtmalar"
+msgstr ""
+
+#: apps/ticket/models/seat.py:10
+msgid "Joylar soni"
+msgstr ""
+
+#: apps/ticket/models/seat.py:12
+msgid "Narx"
+msgstr ""
+
+#: apps/ticket/models/seat.py:21
+msgid "Joylar"
+msgstr ""
+
+#: apps/ticket/models/users.py:9
+msgid "Admin"
+msgstr ""
+
+#: apps/ticket/models/users.py:10
+msgid "Moderator"
+msgstr ""
+
+#: apps/ticket/models/users.py:14
+msgid "O'zbek tili"
+msgstr ""
+
+#: apps/ticket/models/users.py:15
+msgid "Rus tili"
+msgstr ""
+
+#: apps/ticket/models/users.py:16
+msgid "Ingliz tili"
+msgstr ""
+
+#: apps/ticket/models/users.py:19
+#, fuzzy
+#| msgid "Telegram"
+msgid "Telegram ID"
+msgstr "Телеграм"
+
+#: apps/ticket/models/users.py:24
+msgid "Foydalanuvchi nomi"
+msgstr ""
+
+#: apps/ticket/models/users.py:27
+msgid "Ism"
+msgstr ""
+
+#: apps/ticket/models/users.py:30
+msgid "Familiya"
+msgstr ""
+
+#: apps/ticket/models/users.py:38
+#, fuzzy
+#| msgid "Title"
+msgid "Til"
+msgstr "Заголовок"
+
+#: apps/ticket/models/users.py:40
+msgid "Faolmi"
+msgstr ""
+
+#: apps/ticket/models/users.py:42
+msgid "Rol"
+msgstr ""
+
+#: apps/ticket/models/users.py:47
+msgid "Bot Foydalanuvchisi"
+msgstr ""
+
+#: apps/ticket/models/users.py:48
+msgid "Bot Foydalanuvchilari"
+msgstr ""
+
+#: apps/ticket/models/users.py:51
+msgid "Bot Foydalnuvchisi"
+msgstr ""
+
+#: core/config/unfold.py:80
+msgid "O'rindiqlar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:9
+msgid "Bosh sahifa"
+msgstr ""
+
+#: core/config/unfold_navigation.py:17 core/config/unfold_navigation.py:20
+msgid "Foydalanuvchilar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:25
+msgid "Bot foydalanuvchilari"
+msgstr ""
+
+#: core/config/unfold_navigation.py:44
+msgid "Tushumlar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:63
+msgid "Transaksiyalar"
+msgstr ""
+
+#: core/settings.py:101
+msgid "O'zbekcha"
+msgstr ""
+
+#: core/settings.py:102
+msgid "Русский"
+msgstr ""
+
+#~ msgid ""
+#~ "{info.name}\n"
+#~ "\n"
+#~ "{info.description}\n"
+#~ "\n"
+#~ "*☎️Telefon raqam:* {info.phone}\n"
+#~ msgstr ""
+#~ "{info.name}\n"
+#~ "\n"
+#~ "{info.description}\n"
+#~ "\n"
+#~ "*☎️Номер телефона:* {info.phone}\n"
+
+#~ msgid "Short Title"
+#~ msgstr "Краткий заголовок"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "Short Description"
+#~ msgstr "Краткое описание"
+
+#~ msgid "Image"
+#~ msgstr "Изображение"
+
+#~ msgid "Academic Hours"
+#~ msgstr "Академические часы"
+
+#~ msgid "Education Services"
+#~ msgstr "Образовательные услуги"
+
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Education Subject Category"
+#~ msgstr "Категория учебного предмета"
+
+#~ msgid "Education Subject Categories"
+#~ msgstr "Категории учебных предметов"
+
+#~ msgid "Full Name"
+#~ msgstr "Полное имя"
+
+#~ msgid "Phone"
+#~ msgstr "Телефон"
+
+#~ msgid "Problem"
+#~ msgstr "Проблема"
+
+#~ msgid "Category"
+#~ msgstr "Категория"
+
+#~ msgid "Video"
+#~ msgstr "Видео"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Education Subject"
+#~ msgstr "Учебный предмет"
+
+#~ msgid "Education Subjects"
+#~ msgstr "Учебные предметы"
+
+#~ msgid "Logo"
+#~ msgstr "Логотип"
+
+#~ msgid "Address"
+#~ msgstr "Адрес"
+
+#~ msgid "Dekan"
+#~ msgstr "Декан"
+
+#~ msgid "Dekan Photo"
+#~ msgstr "Фото декана"
+
+#~ msgid "Faculty"
+#~ msgstr "Факультет"
+
+#~ msgid "Faculties"
+#~ msgstr "Факультеты"
+
+#~ msgid "Files"
+#~ msgstr "Файлы"
+
+#~ msgid "Gallery"
+#~ msgstr "Галерея"
+
+#~ msgid "Subtitle"
+#~ msgstr "Подзаголовок"
+
+#~ msgid "Location"
+#~ msgstr "Местоположение"
+
+#~ msgid "Icon"
+#~ msgstr "Иконка"
+
+#~ msgid "Instagram"
+#~ msgstr "Инстаграм"
+
+#~ msgid "Facebook"
+#~ msgstr "Фейсбук"
+
+#~ msgid "Twitter"
+#~ msgstr "Твиттер"
+
+#~ msgid "Linkedin"
+#~ msgstr "Линкедин"
+
+#~ msgid "Youtube"
+#~ msgstr "Ютуб"
+
+#~ msgid "News"
+#~ msgstr "Новости"
+
+#~ msgid "Projects"
+#~ msgstr "Проекты"
+
+#~ msgid "PTIK Story"
+#~ msgstr "История PTIK"
+
+#~ msgid "PTIK Stories"
+#~ msgstr "Истории PTIK"
+
+#~ msgid "Scientific Base"
+#~ msgstr "Научная база"
+
+#~ msgid "Subject"
+#~ msgstr "Тема"
+
+#~ msgid "Message"
+#~ msgstr "Сообщение"
+
+#~ msgid "Videos"
+#~ msgstr "Видео"
+
+#~ msgid "email address"
+#~ msgstr "Адрес электронной почты"
+
+#~ msgid ""
+#~ "The groups this user belongs to. A user will get all permissions granted to "
+#~ "each of their groups."
+#~ msgstr ""
+#~ "Группы, к которым принадлежит этот пользователь. Пользователь получит все "
+#~ "разрешения, предоставленные каждой из их групп."
+
+#~ msgid "groups"
+#~ msgstr "группы"
+
+#~ msgid "Specific permissions for this user."
+#~ msgstr "Специальные разрешения для этого пользователя."
+
+#~ msgid "user permissions"
+#~ msgstr "разрешения пользователя"
+
+#~ msgid "user"
+#~ msgstr "пользователь"
+
+#~ msgid "users"
+#~ msgstr "пользователи"
+
+#~ msgid "Russia"
+#~ msgstr "Россия"
+
+#~ msgid "English"
+#~ msgstr "Английский"
+
+#~ msgid "Uzbek"
+#~ msgstr "Узбекский"

@@ -3,12 +3,15 @@ from telebot.types import CallbackQuery
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from apps.bot.logger import logger
+from apps.bot.utils.language import set_language_code
 from apps.ticket.models import BotUsers
 from apps.ticket.models import Order, Seat
+from django.utils.translation import activate, gettext as _
 
 
 def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
     try:
+        activate(set_language_code(call.from_user.id))
         data = call.data.split("_")
         seat_id = int(data[2])
         count = int(data[3])
@@ -30,10 +33,10 @@ def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
         # Create new inline keyboard with "Select Payment" and "PayMe" buttons
         inline_markup = InlineKeyboardMarkup()
         inline_markup.add(
-            InlineKeyboardButton("Select Payment", callback_data="select_payment")
+            InlineKeyboardButton(_("Select Payment"), callback_data="select_payment")
         )
         inline_markup.add(
-            InlineKeyboardButton("PayMe", callback_data=f"payme_{order.id}")
+            InlineKeyboardButton("PAYME", callback_data=f"payme_{order.id}")
         )
 
         # Update the message with the new inline keyboard
@@ -43,7 +46,7 @@ def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
             reply_markup=inline_markup,
         )
 
-        bot.answer_callback_query(call.id, f"{count} tickets selected.")
+        bot.answer_callback_query(call.id, _(f"{count} tickets selected."))
     except Exception as e:
-        bot.answer_callback_query(call.id, "An error occurred.")
+        bot.answer_callback_query(call.id, _("An error occurred."))
         logger.error(f"Error while handling select count callback: {e}")

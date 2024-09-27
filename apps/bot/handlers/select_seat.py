@@ -3,11 +3,14 @@ from telebot.apihelper import ApiTelegramException
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from apps.bot.logger import logger
+from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Seat
+from django.utils.translation import activate, gettext as _
 
 
 def handle_select_seat_callback(call: CallbackQuery, bot: TeleBot):
     try:
+        activate(set_language_code(call.from_user.id))
         seat_id = int(call.data.split("_")[2])
         seat = Seat.objects.get(id=seat_id)
         logger.info(f"Seat selected: {seat.name}")
@@ -16,7 +19,9 @@ def handle_select_seat_callback(call: CallbackQuery, bot: TeleBot):
         buttons = []
 
         # Add "Select Quantity" button at the top
-        inline_markup.add(InlineKeyboardButton("Select Quantity", callback_data="noop"))
+        inline_markup.add(
+            InlineKeyboardButton(_("Select Quantity"), callback_data="noop")
+        )
 
         if seat.count > 50:
             max_buttons = 50
@@ -36,7 +41,9 @@ def handle_select_seat_callback(call: CallbackQuery, bot: TeleBot):
 
         # Add "Back" button at the bottom
         inline_markup.add(
-            InlineKeyboardButton("Back", callback_data=f"buy_ticket_{seat.concert.id}")
+            InlineKeyboardButton(
+                _("Back"), callback_data=f"buy_ticket_{seat.concert.id}"
+            )
         )
 
         # Check if the new reply markup is different from the current one
@@ -47,18 +54,17 @@ def handle_select_seat_callback(call: CallbackQuery, bot: TeleBot):
                 reply_markup=inline_markup,
             )
         else:
-            bot.answer_callback_query(call.id, "No changes to update.")
+            bot.answer_callback_query(call.id, _("No changes to update."))
     except ApiTelegramException as e:
-        if (
-            e.result_json["description"]
-            == "Bad Request: query is too old and response timeout expired or query ID is invalid"
+        if e.result_json["description"] == _(
+            "Bad Request: query is too old and response timeout expired or query ID is invalid"
         ):
             bot.answer_callback_query(
-                call.id, "This action took too long. Please try again."
+                call.id, _("This action took too long. Please try again.")
             )
         else:
-            bot.answer_callback_query(call.id, "An error occurred.")
+            bot.answer_callback_query(call.id, _("An error occurred."))
         logger.error(f"Telegram API error while handling select seat callback: {e}")
     except Exception as e:
-        bot.answer_callback_query(call.id, "An error occurred.")
+        bot.answer_callback_query(call.id, _("An error occurred."))
         logger.error(f"Error while handling select seat callback: {e}")

@@ -1,4 +1,4 @@
-from payme.views import MerchantAPIView
+from apps.payme.views import MerchantAPIView
 
 
 class PaymeCallBackAPIView(MerchantAPIView):

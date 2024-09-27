@@ -10,7 +10,6 @@ THIRD_PARTY_APPS = [
     "django_ckeditor_5",
     "corsheaders",
     "rosetta",
-    "payme",
     "rest_framework",
     "drf_spectacular",
     "drf_spectacular_sidecar",
@@ -29,4 +28,5 @@ PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
     "apps.ticket.apps.TicketConfig",
     "apps.payment.apps.PaymentConfig",
+    "apps.payme.apps.PaymeConfig",
 ]

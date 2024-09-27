@@ -57,6 +57,24 @@ PAGES = [
     },
     {
         "seperator": True,
+        "title": _("Payme"),
+        "items": [
+            {
+                "title": _("Transaksiyalar"),
+                "icon": "receipt_long",
+                "link": reverse_lazy(
+                    "admin:payme_merchanttransactionsmodel_changelist"
+                ),
+            },
+            {
+                "title": _("Buyurtmalar"),
+                "icon": "payments",
+                "link": reverse_lazy("admin:payment_payment_changelist"),
+            },
+        ],
+    },
+    {
+        "seperator": True,
         "title": _("Ma'lumotlar"),
         "items": [
             {

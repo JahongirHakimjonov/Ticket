@@ -24,7 +24,6 @@ from apps.bot.handlers.home import handle_message
 from apps.bot.middlewares import set_language
 from apps.bot.utils.database import Database
 from telebot import TeleBot, apihelper
-from telebot.storage import StateMemoryStorage
 from apps.bot.query import query_text
 from apps.bot.logger import logger  # Import logger from the new module
 from apps.bot.handlers.callback import handle_callback_query
@@ -39,11 +38,8 @@ db = Database()
 apihelper.ENABLE_MIDDLEWARE = True
 logger.info("Middlewares enabled")
 
-# Initialize the bot with state storage
-state_storage = StateMemoryStorage()
-
 # I recommend increasing num_threads
-bot = TeleBot(TOKEN, num_threads=10, state_storage=state_storage)
+bot = TeleBot(TOKEN, num_threads=5)
 logger.info("Bot created")
 
 
@@ -113,3 +109,4 @@ if __name__ == "__main__":
     logger.info("Bot is running...")
     logger.info("Press Ctrl + C to stop the bot")
     run()
+    logger.info("Bot stopped")

@@ -10,9 +10,13 @@ from apps.bot.handlers.payme import handle_payme_callback
 from apps.bot.handlers.select_count import handle_select_count_callback
 from apps.bot.handlers.select_seat import handle_select_seat_callback
 from apps.bot.logger import logger
+from django.utils.translation import activate, gettext as _
+
+from apps.bot.utils.language import set_language_code
 
 
 def handle_callback_query(call: CallbackQuery, bot: TeleBot):
+    activate(set_language_code(call.from_user.id))
     if call.data.startswith("buy_ticket_"):
         handle_buy_ticket_callback(call, bot)
         logger.info(f"User {call.from_user.id} selected a concert.")
@@ -23,16 +27,16 @@ def handle_callback_query(call: CallbackQuery, bot: TeleBot):
         handle_select_count_callback(call, bot)
         logger.info(f"User {call.from_user.id} selected a count.")
     elif call.data == "noop":
-        bot.answer_callback_query(call.id, "Sonini tanlang")
+        bot.answer_callback_query(call.id, _("Sonini tanlang"))
         logger.info(f"User {call.from_user.id} selected no operation.")
     elif call.data == "select_payment":
-        bot.answer_callback_query(call.id, "To'lov turini tanlang")
+        bot.answer_callback_query(call.id, _("To'lov turini tanlang"))
         logger.info(f"User {call.from_user.id} selected a payment method.")
     elif call.data.startswith("payme_"):
         handle_payme_callback(call, bot)
         logger.info(f"User {call.from_user.id} selected PayMe.")
     elif call.data == "payme_checked":
-        bot.answer_callback_query(call.id, "PayMe tanlandi.")
+        bot.answer_callback_query(call.id, _("PayMe tanlandi."))
         logger.info(f"User {call.from_user.id} selected PayMe.")
     elif call.data == "cancel":
         handle_cancel(call, bot)
@@ -44,5 +48,5 @@ def handle_callback_query(call: CallbackQuery, bot: TeleBot):
         handle_language_selection(call, bot)
         logger.info(f"User {call.from_user.id} selected a language.")
     else:
-        bot.answer_callback_query(call.id, "Unknown action.")
+        bot.answer_callback_query(call.id, _("Unknown action."))
         logger.info(f"User {call.from_user.id} performed an unknown action.")
