@@ -6,6 +6,7 @@ from apps.payme.models import MerchantTransactionsModel
 from apps.payment.choices import PaymentChoices
 from apps.payment.models import Payment
 from apps.ticket.models import Donate, Order
+from apps.ticket.utils import generate_ticket_qr_code
 
 
 @receiver(post_save, sender=MerchantTransactionsModel)
@@ -32,6 +33,10 @@ def check_payment_status(sender, instance, **kwargs):
             if order:
                 order.is_paid = True
                 order.save()
+                from apps.bot.utils.send_message import send_telegram_message
+
+                send_telegram_message(order_id)
+                generate_ticket_qr_code.delay(order_id)
 
 
 @receiver(post_save, sender=Order)

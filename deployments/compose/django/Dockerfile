@@ -10,10 +10,10 @@ ENV PYTHONUNBUFFERED=1 \
 RUN pip install flower
 
 ## Copy and set permissions for celery worker start script
-#COPY ./deployments/compose/django/celery/worker/start /start-celeryworker
-#RUN sed -i 's/\r$//g' /start-celeryworker && \
-#    chmod +x /start-celeryworker
-#
+COPY ./deployments/compose/django/celery/worker/start /start-celeryworker
+RUN sed -i 's/\r$//g' /start-celeryworker && \
+    chmod +x /start-celeryworker
+
 ## Copy and set permissions for celery beat start script
 #COPY ./deployments/compose/django/celery/beat/start /start-celerybeat
 #RUN sed -i 's/\r$//g' /start-celerybeat && \

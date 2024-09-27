@@ -15,10 +15,9 @@ admin.site.unregister(User)
 class GroupAdmin(ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
-    ordering = ("name",)
+    filter_vertical = ("permissions",)
 
-    def has_add_permission(self, request):
-        return False
+
 
 
 @admin.register(User)

@@ -1,0 +1,29 @@
+import os
+
+from django.utils.translation import activate, gettext as _
+from telebot import TeleBot
+
+from apps.bot.utils.language import set_language_code
+from apps.payme.utils.logging import logger
+from apps.ticket.models import BotUsers, Order
+
+bot = TeleBot(os.getenv("BOT_TOKEN"))
+
+
+def send_telegram_message(order_id):
+    try:
+        order = Order.objects.get(id=order_id)
+        if order and order.is_paid:
+            user = order.user
+            activate(set_language_code(user.telegram_id))
+            logger.info(f"Sending message to {user.telegram_id}")
+            if not isinstance(user.telegram_id, int):
+                raise ValueError("Invalid telegram_id: must be an integer")
+            message = _(
+                "To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim bo'limidan olishingiz mumkin)\n\n"
+            )
+            bot.send_message(user.telegram_id, message)
+    except BotUsers.DoesNotExist:
+        pass
+    except ValueError as e:
+        print(e)
