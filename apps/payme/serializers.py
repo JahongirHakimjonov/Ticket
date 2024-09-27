@@ -46,7 +46,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
         Validator for Transactions Amount.
         """
         if amount is not None:
-            if int(amount) <= int(settings.apps.payme.get("apps.payme_MIN_AMOUNT", 0)):
+            if int(amount) <= int(settings.PAYME.get("PAYME_MIN_AMOUNT", 0)):
                 raise IncorrectAmount("apps.payment amount is less than allowed.")
 
         return amount
