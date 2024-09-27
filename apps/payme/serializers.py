@@ -31,7 +31,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
         """
         if attrs.get("order_id") is not None:
             try:
-                order = Order.objects.get(id=attrs["order_id"])
+                order = Order.objects.get(order_id=attrs["order_id"]).last()
                 if order.amount != int(attrs["amount"]):
                     raise IncorrectAmount()
 
@@ -51,7 +51,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
 
         return amount
 
-    def validate_order_id(self, order_id) -> int:
+    def validate_order_id(self, order_id) -> str:
         """
         Use this method to check if a transaction is allowed to be executed.
 
@@ -60,7 +60,7 @@ class MerchantTransactionsModelSerializer(serializers.ModelSerializer):
         order_id: str -> Order Indentation.
         """
         try:
-            Order.objects.get(id=order_id)
+            Order.objects.get(order_id=order_id).last()
         except Order.DoesNotExist as error:
             logger.error("Order does not exist order_id: %s", order_id)
             raise PerformTransactionDoesNotExist() from error
