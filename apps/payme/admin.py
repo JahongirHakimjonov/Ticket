@@ -17,12 +17,8 @@ class MerchantTransactionsModelAdmin(ModelAdmin):
         "order_id",
         "transaction_id",
         "amount",
-        "created_at",
-        "created_at_ms",
-        "perform_time",
-        "cancel_time",
         "state",
-        "reason",
+        "created_at",
     )
     search_fields = ("order_id", "transaction_id")
     list_filter = ("state",)
