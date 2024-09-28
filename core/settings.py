@@ -41,7 +41,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "assets/templates")],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -109,11 +109,11 @@ MODELTRANSLATION_LANGUAGES = ("uz", "ru")
 MODELTRANSLATION_DEFAULT_LANGUAGE = "uz"
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [str(BASE_DIR.joinpath("assets/static"))]
-STATIC_ROOT = str(BASE_DIR.joinpath("assets/staticfiles"))
+STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))]
+STATIC_ROOT = str(BASE_DIR.joinpath("staticfiles"))
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = str(BASE_DIR.joinpath("assets/media"))
+MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
