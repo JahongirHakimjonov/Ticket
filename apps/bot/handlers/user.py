@@ -1,3 +1,4 @@
+from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import (
     Message,
@@ -6,10 +7,10 @@ from telebot.types import (
 )
 
 from apps.bot.keyboard import get_main_buttons
+from apps.bot.logger import logger
 from apps.bot.utils import update_or_create_user
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert
-from django.utils.translation import activate, gettext as _
 
 
 def any_user(message: Message, bot: TeleBot):
@@ -22,6 +23,7 @@ def any_user(message: Message, bot: TeleBot):
                 first_name=message.from_user.first_name,
                 last_name=message.from_user.last_name,
             )
+            logger.info(f"User {message.from_user.id} started the bot.")
             concert_id = message.text.split(" ")[1]
             concert = Concert.objects.get(id=concert_id)
             if concert.is_active:
@@ -53,6 +55,7 @@ def any_user(message: Message, bot: TeleBot):
                 first_name=message.from_user.first_name,
                 last_name=message.from_user.last_name,
             )
+            logger.info(f"User {message.from_user.id} started the bot.")
 
             bot.send_message(
                 message.chat.id,
