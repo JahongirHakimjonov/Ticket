@@ -33,8 +33,8 @@ def query_text(bot, query):
                     message_text=f"{concert.name}\n\n{concert.title}\n\n"
                     f"{concert.date.strftime('%d.%m.%Y')} {concert.time.strftime('%H:%M')}\n\n"
                     f"{concert.description}\n\n[ ]({thumbnail_url})\n"
-                    f"*📍Manzil:* {concert.address}\n"
-                    f"*💸Narxlar:* {concert.min_price:,} UZS - {concert.max_price:,} UZS\n",
+                    f"*📍Manzil \ Адрес:* {concert.address}\n"
+                    f"*💸Narxlar \ Цены:* {concert.min_price:,} UZS - {concert.max_price:,} UZS\n",
                     parse_mode="Markdown",
                 ),
                 reply_markup=keyboard,

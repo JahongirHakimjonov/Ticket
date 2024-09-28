@@ -11,6 +11,7 @@ class InfoAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_filter = ("created_at",)
     list_editable = ("is_active",)
     actions = ["make_active", "make_inactive"]
+    list_filter_submit = True
 
     def make_active(self, request, queryset):  # noqa
         queryset.update(is_active=True)

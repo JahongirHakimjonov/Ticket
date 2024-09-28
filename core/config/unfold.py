@@ -23,6 +23,7 @@ UNFOLD = {
     "SITE_SYMBOL": "speed",
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
+    "ENVIRONMENT": "environment_callback",
     "LOGIN": {
         "image": lambda request: static("images/login.jpg"),
     },
@@ -84,3 +85,14 @@ UNFOLD = {
         },
     ],
 }
+
+
+def environment_callback(request):
+    """
+    Callback has to return a list of two values represeting text value and the color
+    type of the label displayed in top right corner.
+    """
+    return ["Production", "danger"]
+
+
+

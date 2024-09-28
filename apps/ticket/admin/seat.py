@@ -13,6 +13,7 @@ class SeatAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_filter = (ConcertFilter, "is_active")
     list_editable = ("name", "count", "price", "is_active")
     actions = ["make_active", "make_inactive"]
+    list_filter_submit = True
 
     def make_active(self, request, queryset):  # noqa
         queryset.update(is_active=True)

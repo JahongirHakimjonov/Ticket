@@ -16,8 +16,8 @@ def handle_donate(message: Message, bot: TeleBot):
 
     # Create buttons for numbers from 10,000 to 100,000
     buttons = [
-        types.InlineKeyboardButton(text=str(i), callback_data=str(i))
-        for i in range(10000, 100001, 10000)
+        types.InlineKeyboardButton(text=str(f"{i:,}"), callback_data=str(i))
+        for i in [100000, 200000, 300000, 400000, 500000, 1000000, 10000000]
     ]
 
     keyboard.add(*buttons)
@@ -59,9 +59,6 @@ def handle_donation(call: CallbackQuery, bot: TeleBot):
     ).generate_link()
     inline = types.InlineKeyboardMarkup()
     inline.add(types.InlineKeyboardButton(text="PAYME", url=pay_link))
-    logger.info("======================================================")
-    logger.info(f"User language: {set_language_code(call.from_user.id)}")
-    logger.info("======================================================")
     if set_language_code(call.from_user.id) == "uz":
         bot.send_message(
             call.message.chat.id,

@@ -15,3 +15,4 @@ class TicketAdmin(ModelAdmin):
     list_editable = ["is_active"]
     search_fields = ["ticket_id"]
     list_filter = ["is_active", TicketConcertFilter]
+    list_filter_submit = True

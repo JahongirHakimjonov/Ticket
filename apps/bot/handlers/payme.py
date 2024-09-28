@@ -7,6 +7,7 @@ from telebot.types import (
     CallbackQuery,
 )
 
+from apps.bot.keyboard import get_main_buttons
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
 from apps.bot.utils.link import GeneratePayLink
@@ -57,14 +58,14 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
                 call.message.chat.id,
                 _(
                     f"Sizning buyurtmangiz qabul qilindi,\bBuyurtmaning umumiy summasi {order.total_price:,} iltimos, to'lovni amalga oshiring.\nOperator bilan bog'lanish uchun 👉 {info.username}\nTelefon: {info.phone}"
-                ),
+                ), reply_markup=get_main_buttons()
             )
         else:
             bot.send_message(
                 call.message.chat.id,
                 _(
                     f"Ваш заказ принят,\bОбщая сумма заказа составляет {order.total_price:,}, пожалуйста, произведите оплату.\nДля связи с оператором 👉 {info.username}\nТелефон: {info.phone}"
-                ),
+                ), reply_markup=get_main_buttons()
             )
         bot.send_message(
             call.message.chat.id, _("Payme selected."), reply_markup=inline

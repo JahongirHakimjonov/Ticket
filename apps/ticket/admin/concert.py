@@ -22,6 +22,7 @@ class ConcertAdmin(ModelAdmin, TabbedTranslationAdmin):
     actions = ["make_active", "make_inactive"]
     inlines = [SeatInline]
     exclude = ("thumbnail",)
+    list_filter_submit = True
 
     def make_active(self, request, queryset):  # noqa
         queryset.update(is_active=True)

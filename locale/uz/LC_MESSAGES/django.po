@@ -21,7 +21,7 @@ msgstr ""
 
 #: apps/bot/handlers/active_ticket.py:17
 msgid "Sizda faol chiptalar mavjud emas."
-msgstr ""
+msgstr "Sizda faol chiptalar mavjud emas."
 
 #: apps/bot/handlers/active_ticket.py:22 apps/bot/handlers/all_ticket.py:21
 msgid ""
@@ -35,7 +35,7 @@ msgstr ""
 
 #: apps/bot/handlers/all_ticket.py:16
 msgid "Sizda hech qanday chipta mavjud emas."
-msgstr ""
+msgstr "Sizda hech qanday chipta mavjud emas."
 
 #: apps/bot/handlers/buy_ticket.py:24
 msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
@@ -54,11 +54,11 @@ msgstr "Xatolik yuz berdi."
 
 #: apps/bot/handlers/callback.py:30
 msgid "Sonini tanlang"
-msgstr ""
+msgstr "Sonini tanlang"
 
 #: apps/bot/handlers/callback.py:33
 msgid "To'lov turini tanlang"
-msgstr ""
+msgstr "To'lov turini tanlang"
 
 #: apps/bot/handlers/callback.py:39
 msgid "PayMe tanlandi."
@@ -162,7 +162,7 @@ msgstr "Men sizni tushunmayapman, iltimos, quyidagi tugmalardan foydalaning"
 
 #: apps/bot/handlers/info.py:13
 msgid "Hozircha ma'lumotlar mavjud emas"
-msgstr ""
+msgstr "Hozircha ma'lumotlar mavjud emas"
 
 #: apps/bot/handlers/language.py:38
 msgid "Language updated successfully!"
@@ -171,12 +171,12 @@ msgstr "Til muvaffaqiyatli almashtirildi"
 #: apps/bot/handlers/order.py:14
 #, python-brace-format
 msgid "Rahmat, {full_name}. Endi telefon raqamingizni kiriting:"
-msgstr ""
+msgstr "Rahmat, {full_name}. Endi telefon raqamingizni kiriting:"
 
 #: apps/bot/handlers/order.py:24
 #, python-brace-format
 msgid "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
-msgstr ""
+msgstr "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 
 #: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:36
 msgid "Select Payment"
@@ -245,7 +245,7 @@ msgstr "Bu sana uchun faol konsertlar topilmadi."
 
 #: apps/bot/handlers/ticket.py:17
 msgid "Kerakli bo'limni tanlang:"
-msgstr ""
+msgstr "Kerakli bo'limni tanlang:"
 
 #: apps/bot/handlers/user.py:45
 msgid "This concert is not active."
@@ -263,7 +263,7 @@ msgstr "Konsert topilmadi."
 
 #: apps/bot/middlewares/antiflood_middleware.py:18
 msgid "You are making request too often"
-msgstr ""
+msgstr "Siz so'rovni juda tez yuborayapsiz"
 
 #: apps/payme/models.py:16
 msgid "Transaction ID"

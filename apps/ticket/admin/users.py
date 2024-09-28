@@ -17,6 +17,7 @@ class BotUsersAdmin(ModelAdmin):
     search_fields = ("first_name", "last_name", "phone", "username")
     ordering = ("-created_at",)
     actions = ["make_active", "make_inactive"]
+    list_filter_submit = True
 
     def make_active(self, request, queryset):  # noqa
         queryset.update(is_active=True)

@@ -27,11 +27,11 @@ def handle_concert(message: Message, bot: TeleBot):
                 photo=concert_details.photo,
                 caption=_(
                     f"{concert_details.name}\n\n{concert_details.title}\n\n"
-                    f"Sana: {concert_details.date.strftime('%d.%m.%Y')}\nVaqti: {concert_details.time.strftime('%H:%M')}\n\n"
+                    f"Sana \ Дата: {concert_details.date.strftime('%d.%m.%Y')}\nVaqti \ Время: {concert_details.time.strftime('%H:%M')}\n\n"
                     f"{concert_details.description}\n\n"
-                    f"*📍Manzil:* {concert_details.address}\n\n"
-                    f"[📍Google Xarita]({concert_details.location_google_maps})\n[📍Yandex Xarita]({concert_details.location_yandex_maps})\n\n"
-                    f"*💸Narxlar:* {concert_details.min_price:,} UZS - {concert_details.max_price:,} UZS\n"
+                    f"*📍Manzil \ Адрес:* {concert_details.address}\n\n"
+                    f"[📍Google Xarita \ Карта Google]({concert_details.location_google_maps})\n[📍Yandex Xarita \ Яндекс Карта]({concert_details.location_yandex_maps})\n\n"
+                    f"*💸Narxlar \ Цены:* {concert_details.min_price:,} UZS - {concert_details.max_price:,} UZS\n"
                 ),
                 parse_mode="Markdown",
                 reply_markup=InlineKeyboardMarkup().add(
