@@ -109,7 +109,7 @@ MODELTRANSLATION_LANGUAGES = ("uz", "ru")
 MODELTRANSLATION_DEFAULT_LANGUAGE = "uz"
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))]
+STATICFILES_DIRS = [str(BASE_DIR.joinpath("staticfiles"))]
 STATIC_ROOT = str(BASE_DIR.joinpath("staticfiles"))
 
 MEDIA_URL = "media/"
