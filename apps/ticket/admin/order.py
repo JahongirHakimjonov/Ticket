@@ -13,13 +13,11 @@ class OrderAdmin(ModelAdmin):
         "total_price",
         "created_at",
         "is_paid",
-        "is_confirmed",
     )
     search_fields = ("user__username", "user__phone", "user__telegram_id")
     list_filter = ("is_paid", "is_confirmed", ConcertFilter)
     actions = ["make_active", "make_inactive"]
     date_hierarchy = "created_at"
-    list_editable = ("is_confirmed",)
     list_filter_submit = True
 
     def make_active(self, request, queryset):  # noqa

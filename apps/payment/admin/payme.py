@@ -15,3 +15,4 @@ class PaymentAdmin(ModelAdmin):
         "order_id",
     )
     list_filter = ("status", "type")
+    search_fields = ("order_id", "transaction_id")

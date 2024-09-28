@@ -24,3 +24,5 @@ class MerchantTransactionsModelAdmin(ModelAdmin):
         "state",
         "reason",
     )
+    search_fields = ("order_id", "transaction_id")
+    list_filter = ("state",)

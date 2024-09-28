@@ -14,6 +14,7 @@ def check_payme_status(sender, instance, **kwargs):
     if instance.state == int(1):
         payment = Payment.objects.get(order_id=instance.order_id)
         payment.status = PaymentChoices.COMPLETED
+        payment.transaction_id = instance.transaction_id
         payment.save()
 
 
