@@ -20,6 +20,7 @@ def handle_all_tickets(message: Message, bot: TeleBot):
 
     for order in orders:
         file_path = os.path.join(settings.MEDIA_ROOT, order.ticket.name)
+        logger.info(f"Trying to send ticket to user {user.id}")
         if os.path.exists(file_path):
             text = order.ticket_id
             bot.send_document(message.chat.id, order.ticket, caption=text)
