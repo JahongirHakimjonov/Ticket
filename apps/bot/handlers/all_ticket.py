@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import Message
@@ -16,6 +19,11 @@ def handle_all_tickets(message: Message, bot: TeleBot):
         return
 
     for order in orders:
-        text = order.ticket_id
-        bot.send_document(message.chat.id, order.ticket, caption=text)
-        logger.info(f"All tickets sent to user {user.id}")
+        file_path = os.path.join(settings.MEDIA_ROOT, order.ticket.name)
+        if os.path.exists(file_path):
+            text = order.ticket_id
+            bot.send_document(message.chat.id, order.ticket, caption=text)
+            logger.info(f"All tickets sent to user {user.id}")
+        else:
+            logger.error(f"File not found: {file_path}")
+            bot.send_message(message.chat.id, _("Chiptani yuklab bo'lmadi, fayl topilmadi."))
