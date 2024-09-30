@@ -183,7 +183,7 @@ msgstr "Спасибо, ваш номер телефона: {phone}. Ваш за
 #: apps/bot/handlers/payme.py:37 apps/bot/handlers/payme.py:46
 #: apps/bot/handlers/select_count.py:36
 msgid "Select Payment"
-msgstr "Оплатить"
+msgstr "Выберите способ оплаты"
 
 #: apps/bot/handlers/payme.py:57
 #| msgid ""

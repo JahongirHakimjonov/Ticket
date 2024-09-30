@@ -180,7 +180,7 @@ msgstr "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 
 #: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:36
 msgid "Select Payment"
-msgstr "To'lash"
+msgstr "To'lov turini tanlang"
 
 #: apps/bot/handlers/payme.py:46
 #, python-brace-format

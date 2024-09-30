@@ -29,6 +29,9 @@ class BotUsers(AbstractBaseModel):
     last_name = models.CharField(
         max_length=255, null=True, blank=True, verbose_name=_("Familiya")
     )
+    full_name = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_("Ism va Familiya")
+    )
     phone = models.BigIntegerField(
         null=True, blank=True, unique=True, verbose_name=_("Telefon raqam")
     )
