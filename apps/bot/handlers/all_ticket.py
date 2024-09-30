@@ -27,4 +27,6 @@ def handle_all_tickets(message: Message, bot: TeleBot):
             logger.info(f"All tickets sent to user {user.id}")
         else:
             logger.error(f"File not found: {file_path}")
-            bot.send_message(message.chat.id, _("Chiptani yuklab bo'lmadi, fayl topilmadi."))
+            bot.send_message(
+                message.chat.id, _("Chiptani yuklab bo'lmadi, fayl topilmadi.")
+            )

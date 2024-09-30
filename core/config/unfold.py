@@ -93,6 +93,3 @@ def environment_callback(request):
     type of the label displayed in top right corner.
     """
     return ["Production", "danger"]
-
-
-

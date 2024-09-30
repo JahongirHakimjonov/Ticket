@@ -18,8 +18,6 @@ class GroupAdmin(ModelAdmin):
     filter_vertical = ("permissions",)
 
 
-
-
 @admin.register(User)
 class UserAdmin(ModelAdmin):
     change_password_form = AdminPasswordChangeForm

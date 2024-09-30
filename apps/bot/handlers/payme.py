@@ -48,13 +48,17 @@ def handle_payme_callback(call: CallbackQuery, bot: TeleBot):
         )
 
         # Foydalanuvchidan telefon raqami so'rash
-        request_phone_keyboard = ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-        request_phone_keyboard.add(KeyboardButton(text=_("📞 Telefon raqamni yuboring"), request_contact=True))
+        request_phone_keyboard = ReplyKeyboardMarkup(
+            one_time_keyboard=True, resize_keyboard=True
+        )
+        request_phone_keyboard.add(
+            KeyboardButton(text=_("📞 Telefon raqamni yuboring"), request_contact=True)
+        )
 
         bot.send_message(
             call.message.chat.id,
             _("Iltimos, telefon raqamingizni yuboring yoki yozing:"),
-            reply_markup=request_phone_keyboard
+            reply_markup=request_phone_keyboard,
         )
 
         # Telefon raqamni qabul qilgandan keyin ism/familiyani so'rashga o'tish
@@ -74,7 +78,9 @@ def process_phone_number(message, bot: TeleBot, order):
         else:
             regex_pattern = r"^\+?998[\d\s\-\(\)]{9,13}$"
             # User sent phone number as text
-            phone_number = message.text if re.match(regex_pattern, message.text) else None
+            phone_number = (
+                message.text if re.match(regex_pattern, message.text) else None
+            )
 
         if phone_number:
             # Save phone number to order
@@ -85,8 +91,7 @@ def process_phone_number(message, bot: TeleBot, order):
 
             # Ask for full name
             bot.send_message(
-                message.chat.id,
-                _("Iltimos, to'liq ismingizni yozing (Ism Familiya):")
+                message.chat.id, _("Iltimos, to'liq ismingizni yozing (Ism Familiya):")
             )
 
             # Proceed to process full name
@@ -94,8 +99,7 @@ def process_phone_number(message, bot: TeleBot, order):
         else:
             # Ask for phone number again
             bot.send_message(
-                message.chat.id,
-                _("Noto'g'ri telefon raqami. Iltimos, qayta kiriting:")
+                message.chat.id, _("Noto'g'ri telefon raqami. Iltimos, qayta kiriting:")
             )
             bot.register_next_step_handler(message, process_phone_number, bot, order)
 
@@ -124,7 +128,7 @@ def process_full_name(message, bot: TeleBot, order):
                 f"Sizning buyurtmangiz qabul qilindi,\nBuyurtmaning umumiy summasi {order.total_price:,} so'm.\n"
                 f"Operator bilan bog'lanish uchun 👉 {info.username}\nTelefon: {info.phone}"
             ),
-            reply_markup=get_main_buttons()
+            reply_markup=get_main_buttons(),
         )
 
         order_id = f"order_{uuid()}_{order.id}"
@@ -140,12 +144,17 @@ def process_full_name(message, bot: TeleBot, order):
 
         # Yana Payme linkini yuborish
         bot.send_message(
-            message.chat.id, _("Payme tanlandi."), reply_markup=InlineKeyboardMarkup().add(
-                InlineKeyboardButton(_("To'lovni amalga oshiring"), url=GeneratePayLink(
-                    order_id=order_id,
-                    amount=GeneratePayLink.to_sum(order.total_price * 100),
-                ).generate_link())
-            )
+            message.chat.id,
+            _("Payme tanlandi."),
+            reply_markup=InlineKeyboardMarkup().add(
+                InlineKeyboardButton(
+                    _("To'lovni amalga oshiring"),
+                    url=GeneratePayLink(
+                        order_id=order_id,
+                        amount=GeneratePayLink.to_sum(order.total_price * 100),
+                    ).generate_link(),
+                )
+            ),
         )
 
     except Exception as e:
