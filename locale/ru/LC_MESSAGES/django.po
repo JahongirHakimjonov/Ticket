@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 14:53+0500\n"
-"PO-Revision-Date: 2024-09-27 14:54+0500\n"
+"POT-Creation-Date: 2024-09-30 17:57+0500\n"
+"PO-Revision-Date: 2024-09-30 17:59+0500\n"
 "Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,36 +19,31 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: apps/bot/handlers/active_ticket.py:17
+#: apps/bot/handlers/active_ticket.py:18
 msgid "Sizda faol chiptalar mavjud emas."
 msgstr "У вас нет активных билетов."
 
-#: apps/bot/handlers/active_ticket.py:22 apps/bot/handlers/all_ticket.py:21
-msgid ""
-"Order ID: {order.id}\n"
-"Order Date: {order.concert.name}\n"
-"Order Details: {order.total_price:,}\n"
-msgstr ""
-"ID заказа: {order.id}\n"
-"Дата заказа: {order.concert.name}\n"
-"Детали заказа: {order.total_price:,}\n"
-
-#: apps/bot/handlers/all_ticket.py:16
+#: apps/bot/handlers/all_ticket.py:18
 msgid "Sizda hech qanday chipta mavjud emas."
 msgstr "У вас нет билетов."
 
+#: apps/bot/handlers/all_ticket.py:31
+msgid "Chiptani yuklab bo'lmadi, fayl topilmadi."
+msgstr "Не удалось загрузить билет, файл не найден."
+
 #: apps/bot/handlers/buy_ticket.py:24
-msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
+#, fuzzy
+#| msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
+msgid "{seat.name} - {seat.price:,} UZS, Mavjud \\ Есть: {seat.count}"
 msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 
-#: apps/bot/handlers/buy_ticket.py:36
+#: apps/bot/handlers/buy_ticket.py:38
 msgid "No seats available for this concert."
 msgstr "На этот концерт мест нет."
 
-#: apps/bot/handlers/buy_ticket.py:38 apps/bot/handlers/payme.py:67
-#: apps/bot/handlers/select_count.py:51 apps/bot/handlers/select_seat.py:63
-#: apps/bot/handlers/select_seat.py:66 apps/bot/handlers/selection_date.py:66
-#: apps/bot/handlers/user.py:63
+#: apps/bot/handlers/buy_ticket.py:41 apps/bot/handlers/select_count.py:61
+#: apps/bot/handlers/select_seat.py:66 apps/bot/handlers/select_seat.py:69
+#: apps/bot/handlers/selection_date.py:72 apps/bot/handlers/user.py:71
 msgid "An error occurred."
 msgstr "Произошла ошибка."
 
@@ -68,7 +63,7 @@ msgstr "Payme выбран."
 msgid "Unknown action."
 msgstr "Неизвестное действие."
 
-#: apps/bot/handlers/concert.py:28
+#: apps/bot/handlers/concert.py:30
 #, python-brace-format
 msgid ""
 "{concert_details.name}\n"
@@ -77,34 +72,34 @@ msgid ""
 "\n"
 msgstr ""
 
-#: apps/bot/handlers/concert.py:37 apps/bot/handlers/selection_date.py:31
-#: apps/bot/handlers/selection_date.py:57 apps/bot/handlers/user.py:40
+#: apps/bot/handlers/concert.py:40 apps/bot/handlers/selection_date.py:33
+#: apps/bot/handlers/selection_date.py:62 apps/bot/handlers/user.py:45
 msgid "Buy Tickets"
 msgstr "Покупка"
 
-#: apps/bot/handlers/concert.py:45
+#: apps/bot/handlers/concert.py:49
 msgid "Search Concerts"
 msgstr "Поиск концертов"
 
-#: apps/bot/handlers/concert.py:51 apps/bot/handlers/home.py:41
+#: apps/bot/handlers/concert.py:55 apps/bot/handlers/home.py:41
 #: apps/bot/handlers/selection_date.py:14
 msgid "All"
 msgstr "Все"
 
-#: apps/bot/handlers/concert.py:60 apps/bot/handlers/home.py:49
+#: apps/bot/handlers/concert.py:64 apps/bot/handlers/home.py:49
 #: apps/bot/handlers/ticket.py:13
 msgid "Home"
 msgstr "Главная"
 
-#: apps/bot/handlers/concert.py:68
+#: apps/bot/handlers/concert.py:72
 msgid "Please select a concert date or search for concerts:"
 msgstr "Пожалуйста, выберите дату концерта или выполните поиск концертов:"
 
-#: apps/bot/handlers/concert.py:73
+#: apps/bot/handlers/concert.py:77
 msgid "Available concert dates:"
 msgstr "Доступные даты концертов:"
 
-#: apps/bot/handlers/concert.py:77
+#: apps/bot/handlers/concert.py:81
 msgid "No active concerts available."
 msgstr "Нет доступных активных концертов."
 
@@ -112,18 +107,9 @@ msgstr "Нет доступных активных концертов."
 msgid "Cancel"
 msgstr "Отмена"
 
-#: apps/bot/handlers/donate.py:31
+#: apps/bot/handlers/donate.py:32
 msgid "Select an amount to donate:"
 msgstr "Выберите сумму пожертвования:"
-
-#: apps/bot/handlers/donate.py:64
-#, python-brace-format
-msgid ""
-"Siz bizga {amount} so'm mablag'ni jo'natdingiz. Rahmat!\n"
-"Tugmani bosing va to'lovni amalga oshiring."
-msgstr ""
-"Вы отправили нам {amount}. Спасибо!\n"
-"Нажмите кнопку и произведите оплату."
 
 #: apps/bot/handlers/home.py:31 apps/bot/keyboard/home.py:7
 msgid "Concert"
@@ -166,7 +152,7 @@ msgstr "Я вас не понимаю, воспользуйтесь кнопка
 msgid "Hozircha ma'lumotlar mavjud emas"
 msgstr "Данных пока нет"
 
-#: apps/bot/handlers/language.py:38
+#: apps/bot/handlers/language.py:39
 msgid "Language updated successfully!"
 msgstr "Язык успешно обновлен!"
 
@@ -180,47 +166,75 @@ msgstr "Спасибо, {full_name}. Теперь введите свой ном
 msgid "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 msgstr "Спасибо, ваш номер телефона: {phone}. Ваш заказ принят."
 
-#: apps/bot/handlers/payme.py:37 apps/bot/handlers/payme.py:46
-#: apps/bot/handlers/select_count.py:36
+#: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:46
 msgid "Select Payment"
 msgstr "Выберите способ оплаты"
 
-#: apps/bot/handlers/payme.py:57
-#| msgid ""
-#| "Sizning buyurtmangiz qabul qilindi, iltimos, to'lovni amalga oshiring.\n"
-#| "Operator bilan bog'lanish uchun 👉 {info.username}\n"
-#| "Telefon: {info.phone}"
+#: apps/bot/handlers/payme.py:55
+msgid "📞 Telefon raqamni yuboring"
+msgstr "📞 Отправьте номер телефона"
+
+#: apps/bot/handlers/payme.py:60
+msgid "Iltimos, telefon raqamingizni yuboring yoki yozing:"
+msgstr "Отправьте или напишите свой номер телефона:"
+
+#: apps/bot/handlers/payme.py:68 apps/bot/handlers/payme.py:107
+#: apps/bot/handlers/payme.py:175
+msgid "Xatolik yuz berdi."
+msgstr "Произошла ошибка."
+
+#: apps/bot/handlers/payme.py:94
+msgid "Iltimos, to'liq ismingizni yozing (Ism Familiya):"
+msgstr "Пожалуйста, напишите свое полное имя (Имя Фамилия):"
+
+#: apps/bot/handlers/payme.py:102
+msgid "Noto'g'ri telefon raqami. Iltimos, qayta kiriting:"
+msgstr "Неверный номер телефона. Пожалуйста, введите еще раз (998XXXXXXXXX):"
+
+#: apps/bot/handlers/payme.py:133
 msgid ""
-"Sizning buyurtmangiz qabul qilindi,\bBuyurtmaning umumiy summasi {order.total_price:,} iltimos, to'lovni amalga oshiring.\n"
-"Operator bilan bog'lanish uchun 👉 {info.username}\n"
-"Telefon: {info.phone}"
+"Sizning buyurtmangiz qabul qilindi,\n"
+"Buyurtmaning umumiy summasi {order.total_price:,} so'm.\n"
 msgstr ""
-"Ваш заказ принят. Общая сумма заказа — {order.total_price:,}. Произведите оплату.\n"
-"Для связи с оператором 👉 {info.username}\n"
-"Телефон: {info.phone}"
+"Ваш заказ принят,\n"
+"Общая сумма заказа составляет {order.total_price:,} сум.\n"
 
-#: apps/bot/handlers/payme.py:59 apps/bot/handlers/payme.py:65
-msgid "Payme selected."
-msgstr "Выбран Payme."
+#: apps/bot/handlers/payme.py:142
+msgid ""
+"Ваш заказ принят,\n"
+"Общая сумма заказа {order.total_price:,} сум.\n"
+msgstr ""
 
-#: apps/bot/handlers/select_count.py:49
+#: apps/bot/handlers/payme.py:162
+msgid "Payme tanlandi."
+msgstr "Payme выбран."
+
+#: apps/bot/handlers/payme.py:165
+msgid "To'lovni amalga oshiring"
+msgstr "Произведите оплату"
+
+#: apps/bot/handlers/select_count.py:34
+msgid "Ushbu konsert uchun 50 dan ortiq chipta xarid qila olmaysiz."
+msgstr "На этот концерт нельзя купить более 50 билетов."
+
+#: apps/bot/handlers/select_count.py:59
 #, python-brace-format
 msgid "{count} tickets selected."
 msgstr "{count} выбрано билетов"
 
-#: apps/bot/handlers/select_seat.py:22
+#: apps/bot/handlers/select_seat.py:23
 msgid "Select Quantity"
 msgstr "Выберите количество"
 
-#: apps/bot/handlers/select_seat.py:42
+#: apps/bot/handlers/select_seat.py:45
 msgid "Back"
 msgstr "Назад"
 
-#: apps/bot/handlers/select_seat.py:53
+#: apps/bot/handlers/select_seat.py:57
 msgid "No changes to update."
 msgstr "Никаких изменений для обновления."
 
-#: apps/bot/handlers/select_seat.py:57
+#: apps/bot/handlers/select_seat.py:60
 msgid ""
 "Bad Request: query is too old and response timeout expired or query ID is "
 "invalid"
@@ -228,12 +242,12 @@ msgstr ""
 "Неправильный запрос: запрос слишком старый и истекло время ожидания ответа "
 "или идентификатор запроса недействителен"
 
-#: apps/bot/handlers/select_seat.py:60
+#: apps/bot/handlers/select_seat.py:63
 msgid "This action took too long. Please try again."
 msgstr "Это действие заняло слишком много времени. Попробуйте еще раз."
 
-#: apps/bot/handlers/selection_date.py:22
-#: apps/bot/handlers/selection_date.py:48 apps/bot/handlers/user.py:31
+#: apps/bot/handlers/selection_date.py:23
+#: apps/bot/handlers/selection_date.py:52 apps/bot/handlers/user.py:35
 #, python-brace-format
 msgid ""
 "{concert.name}\n"
@@ -242,8 +256,8 @@ msgid ""
 "\n"
 msgstr ""
 
-#: apps/bot/handlers/selection_date.py:37
-#: apps/bot/handlers/selection_date.py:63
+#: apps/bot/handlers/selection_date.py:40
+#: apps/bot/handlers/selection_date.py:69
 msgid "No active concerts found for this date."
 msgstr "На эту дату активных концертов не найдено."
 
@@ -251,17 +265,17 @@ msgstr "На эту дату активных концертов не найде
 msgid "Kerakli bo'limni tanlang:"
 msgstr "Выберите нужный раздел:"
 
-#: apps/bot/handlers/user.py:45
+#: apps/bot/handlers/user.py:50
 msgid "This concert is not active."
 msgstr "Этот концерт неактивен."
 
-#: apps/bot/handlers/user.py:57
+#: apps/bot/handlers/user.py:64
 msgid "Welcome to the bot! Use the inline keyboard to search for concerts."
 msgstr ""
 "Добро пожаловать в бот! Используйте встроенную клавиатуру для поиска "
 "концертов."
 
-#: apps/bot/handlers/user.py:61
+#: apps/bot/handlers/user.py:69
 msgid "Concert not found."
 msgstr "Концерт не найден."
 
@@ -269,63 +283,69 @@ msgstr "Концерт не найден."
 msgid "You are making request too often"
 msgstr "Вы делаете запрос слишком часто"
 
-#: apps/payme/models.py:16
+#: apps/bot/utils/send_message.py:23
+msgid ""
+"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim bo'limidan olishingiz mumkin)\n"
+"\n"
+msgstr "Оплата прошла успешно! Билеты (доступны в разделе «Мои билеты»)\n"
+
+#: apps/payme/models.py:18
 msgid "Transaction ID"
 msgstr ""
 
-#: apps/payme/models.py:17
+#: apps/payme/models.py:21
 msgid "Order ID"
 msgstr ""
 
-#: apps/payme/models.py:18 apps/payme/models.py:57
+#: apps/payme/models.py:23 apps/payme/models.py:71
 msgid "Amount"
 msgstr ""
 
-#: apps/payme/models.py:19
+#: apps/payme/models.py:24
 msgid "Time"
 msgstr ""
 
-#: apps/payme/models.py:20
+#: apps/payme/models.py:26
 msgid "Perform Time"
 msgstr ""
 
-#: apps/payme/models.py:21
+#: apps/payme/models.py:29
 msgid "Cancel Time"
 msgstr ""
 
-#: apps/payme/models.py:22
+#: apps/payme/models.py:31
 msgid "State"
 msgstr ""
 
-#: apps/payme/models.py:23
+#: apps/payme/models.py:33
 msgid "Reason"
 msgstr ""
 
-#: apps/payme/models.py:24
+#: apps/payme/models.py:36
 msgid "Created At MS"
 msgstr ""
 
-#: apps/payme/models.py:25 apps/payme/models.py:58
+#: apps/payme/models.py:38 apps/payme/models.py:73
 msgid "Created At"
 msgstr ""
 
-#: apps/payme/models.py:26 apps/payme/models.py:59
+#: apps/payme/models.py:39 apps/payme/models.py:75
 msgid "Updated At"
 msgstr ""
 
-#: apps/payme/models.py:32
+#: apps/payme/models.py:45
 msgid "Merchant Transaction"
 msgstr ""
 
-#: apps/payme/models.py:33
+#: apps/payme/models.py:46
 msgid "Merchant Transactions"
 msgstr ""
 
-#: apps/payme/models.py:67 apps/payment/choices/payme.py:21
+#: apps/payme/models.py:83 apps/payment/choices/payme.py:21
 msgid "Order"
 msgstr ""
 
-#: apps/payme/models.py:68
+#: apps/payme/models.py:84
 msgid "Orders"
 msgstr ""
 
@@ -349,7 +369,7 @@ msgstr ""
 msgid "Click"
 msgstr ""
 
-#: apps/payment/choices/payme.py:14 core/config/unfold_navigation.py:60
+#: apps/payment/choices/payme.py:14 core/config/unfold_navigation.py:95
 msgid "Payme"
 msgstr ""
 
@@ -373,9 +393,9 @@ msgstr ""
 msgid "Aktivmi"
 msgstr ""
 
-#: apps/ticket/filters/concert.py:8 apps/ticket/models/concert.py:49
-#: core/config/unfold.py:76 core/config/unfold_navigation.py:33
-#: core/config/unfold_navigation.py:36
+#: apps/ticket/filters/concert.py:8 apps/ticket/filters/concert.py:28
+#: apps/ticket/models/concert.py:49 core/config/unfold.py:77
+#: core/config/unfold_navigation.py:51 core/config/unfold_navigation.py:54
 msgid "Konsertlar"
 msgstr ""
 
@@ -445,7 +465,7 @@ msgstr ""
 msgid "To'landi"
 msgstr ""
 
-#: apps/ticket/models/donate.py:21 core/config/unfold_navigation.py:52
+#: apps/ticket/models/donate.py:21 core/config/unfold_navigation.py:76
 msgid "Xayriya"
 msgstr ""
 
@@ -454,7 +474,7 @@ msgid "Xayriyalar"
 msgstr ""
 
 #: apps/ticket/models/info.py:10 apps/ticket/models/order.py:21
-#: apps/ticket/models/users.py:33
+#: apps/ticket/models/users.py:36
 #, fuzzy
 #| msgid "Telegram"
 msgid "Telefon raqam"
@@ -478,8 +498,8 @@ msgstr ""
 msgid "Ma'lumot"
 msgstr ""
 
-#: apps/ticket/models/info.py:22 core/config/unfold_navigation.py:76
-#: core/config/unfold_navigation.py:79
+#: apps/ticket/models/info.py:22 core/config/unfold_navigation.py:119
+#: core/config/unfold_navigation.py:122
 msgid "Ma'lumotlar"
 msgstr ""
 
@@ -495,7 +515,7 @@ msgstr ""
 msgid "Jami narx"
 msgstr ""
 
-#: apps/ticket/models/order.py:20
+#: apps/ticket/models/order.py:20 apps/ticket/models/users.py:33
 msgid "Ism va Familiya"
 msgstr ""
 
@@ -511,8 +531,8 @@ msgstr ""
 msgid "Buyurtma"
 msgstr ""
 
-#: apps/ticket/models/order.py:41 core/config/unfold_navigation.py:47
-#: core/config/unfold_navigation.py:68
+#: apps/ticket/models/order.py:41 core/config/unfold_navigation.py:68
+#: core/config/unfold_navigation.py:108
 msgid "Buyurtmalar"
 msgstr ""
 
@@ -566,53 +586,57 @@ msgstr ""
 msgid "Familiya"
 msgstr ""
 
-#: apps/ticket/models/users.py:38
+#: apps/ticket/models/users.py:41
 #, fuzzy
 #| msgid "Title"
 msgid "Til"
 msgstr "Заголовок"
 
-#: apps/ticket/models/users.py:40
+#: apps/ticket/models/users.py:43
 msgid "Faolmi"
 msgstr ""
 
-#: apps/ticket/models/users.py:42
+#: apps/ticket/models/users.py:45
 msgid "Rol"
 msgstr ""
 
-#: apps/ticket/models/users.py:47
+#: apps/ticket/models/users.py:50
 msgid "Bot Foydalanuvchisi"
 msgstr ""
 
-#: apps/ticket/models/users.py:48
+#: apps/ticket/models/users.py:51
 msgid "Bot Foydalanuvchilari"
 msgstr ""
 
-#: apps/ticket/models/users.py:51
+#: apps/ticket/models/users.py:54
 msgid "Bot Foydalnuvchisi"
 msgstr ""
 
-#: core/config/unfold.py:80
+#: core/config/unfold.py:81
 msgid "O'rindiqlar"
 msgstr ""
 
-#: core/config/unfold_navigation.py:9
+#: core/config/unfold_navigation.py:21
 msgid "Bosh sahifa"
 msgstr ""
 
-#: core/config/unfold_navigation.py:17 core/config/unfold_navigation.py:20
+#: core/config/unfold_navigation.py:29 core/config/unfold_navigation.py:32
 msgid "Foydalanuvchilar"
 msgstr ""
 
-#: core/config/unfold_navigation.py:25
+#: core/config/unfold_navigation.py:40
 msgid "Bot foydalanuvchilari"
 msgstr ""
 
-#: core/config/unfold_navigation.py:44
+#: core/config/unfold_navigation.py:65
 msgid "Tushumlar"
 msgstr ""
 
-#: core/config/unfold_navigation.py:63
+#: core/config/unfold_navigation.py:84
+msgid "Biletlar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:98
 msgid "Transaksiyalar"
 msgstr ""
 
@@ -623,6 +647,25 @@ msgstr ""
 #: core/settings.py:102
 msgid "Русский"
 msgstr ""
+
+#~ msgid ""
+#~ "Order ID: {order.id}\n"
+#~ "Order Date: {order.concert.name}\n"
+#~ "Order Details: {order.total_price:,}\n"
+#~ msgstr ""
+#~ "ID заказа: {order.id}\n"
+#~ "Дата заказа: {order.concert.name}\n"
+#~ "Детали заказа: {order.total_price:,}\n"
+
+#~ msgid ""
+#~ "Siz bizga {amount} so'm mablag'ni jo'natdingiz. Rahmat!\n"
+#~ "Tugmani bosing va to'lovni amalga oshiring."
+#~ msgstr ""
+#~ "Вы отправили нам {amount}. Спасибо!\n"
+#~ "Нажмите кнопку и произведите оплату."
+
+#~ msgid "Payme selected."
+#~ msgstr "Выбран Payme."
 
 #~ msgid ""
 #~ "{info.name}\n"

@@ -1,3 +1,5 @@
+from django.utils import timezone
+from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import (
     InlineKeyboardButton,
@@ -6,7 +8,6 @@ from telebot.types import (
     KeyboardButton,
     Message,
 )
-from django.utils.translation import activate, gettext as _
 
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert  # Import the Concert model
@@ -17,7 +18,7 @@ def handle_concert(message: Message, bot: TeleBot):
         Concert.objects.filter(is_active=True).values_list("date", flat=True).distinct()
     )
     activate(set_language_code(message.from_user.id))
-    all_concerts = Concert.objects.filter(is_active=True)
+    all_concerts = Concert.objects.filter(is_active=True, date__gte=timezone.now())
     if all_concerts.exists():
         if len(all_concerts) == 1:
             # If there is only one concert, get the single instance

@@ -11,6 +11,7 @@ from apps.bot.logger import logger
 from apps.bot.utils import update_or_create_user
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert
+from django.utils import timezone
 
 
 def any_user(message: Message, bot: TeleBot):
@@ -26,7 +27,7 @@ def any_user(message: Message, bot: TeleBot):
             logger.info(f"User {message.from_user.id} started the bot.")
             concert_id = message.text.split(" ")[1]
             concert = Concert.objects.get(id=concert_id)
-            if concert.is_active:
+            if concert.is_active and concert.date >= timezone.now():
                 bot.send_photo(
                     message.chat.id,
                     photo=concert.photo,

@@ -20,7 +20,9 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
             for seat in seats:
                 inline_markup.add(
                     InlineKeyboardButton(
-                        _(f"{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"),
+                        _(
+                            f"{seat.name} - {seat.price:,} UZS, Mavjud \ Есть: {seat.count}"
+                        ),
                         callback_data=f"select_seat_{seat.id}",
                     )
                 )

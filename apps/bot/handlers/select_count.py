@@ -1,12 +1,12 @@
+from django.db.models import Sum
+from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import CallbackQuery
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
-from apps.ticket.models import BotUsers
-from apps.ticket.models import Order, Seat
-from django.utils.translation import activate, gettext as _
+from apps.ticket.models import BotUsers, Order, Seat
 
 
 def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
@@ -23,6 +23,23 @@ def handle_select_count_callback(call: CallbackQuery, bot: TeleBot):
 
         # Retrieve the user object
         user = BotUsers.objects.get(telegram_id=call.from_user.id)
+
+        # Check the total number of tickets already purchased for the concert
+        total_tickets = (
+            Order.objects.filter(
+                user=user, concert=seat.concert, is_paid=True
+            ).aggregate(total=Sum("count"))["total"]
+            or 0
+        )
+        logger.info(f"Total tickets: {total_tickets}")
+        logger.info(f"Total tickets: {count}")
+        if total_tickets + count > 50:
+            bot.answer_callback_query(
+                call.id,
+                _("Ushbu konsert uchun 50 dan ortiq chipta xarid qila olmaysiz."),
+                show_alert=True,
+            )
+            return
 
         # Create the Order object
         order = Order.objects.create(

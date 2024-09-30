@@ -27,3 +27,19 @@ def send_telegram_message(order_id):
         pass
     except ValueError as e:
         print(e)
+
+
+def send_message(order_id, message):
+    try:
+        logger.info(f"Sending message to {order_id}")
+        order = Order.objects.get(id=order_id)
+        user = order.user
+        activate(set_language_code(user.telegram_id))
+        logger.info(f"Sending message to {user.telegram_id}")
+        if not isinstance(user.telegram_id, int):
+            raise ValueError("Invalid telegram_id: must be an integer")
+        bot.send_message(user.telegram_id, message)
+    except BotUsers.DoesNotExist:
+        pass
+    except ValueError as e:
+        print(e)
