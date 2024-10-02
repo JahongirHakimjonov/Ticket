@@ -55,10 +55,14 @@ def send_news(user_id, title, content, image, news_id):
             raise ValueError("Invalid telegram_id: must be an integer")
         if not image:
             raise ValueError("Image must be non-empty")
-        if image.size > 5 * 1024 * 1024:  # Check if the image size is greater than 10 MB
+        if (
+            image.size > 5 * 1024 * 1024
+        ):  # Check if the image size is greater than 10 MB
             raise ValueError("Image size exceeds the 10 MB limit")
         message = _(f"{title}\n\n{content}")
-        bot.send_photo(user.telegram_id, news.image, caption=message, parse_mode="Markdown")
+        bot.send_photo(
+            user.telegram_id, news.image, caption=message, parse_mode="Markdown"
+        )
     except BotUsers.DoesNotExist:
         pass
     except ValueError as e:
