@@ -55,7 +55,7 @@ def handle_donation(call: CallbackQuery, bot: TeleBot):
     )
     pay_link = GeneratePayLink(
         order_id=order_id,
-        amount=GeneratePayLink.to_sum(payment.amount * 100),
+        amount=GeneratePayLink.to_tiyin(payment.amount),
     ).generate_link()
     inline = types.InlineKeyboardMarkup()
     inline.add(types.InlineKeyboardButton(text="PAYME", url=pay_link))

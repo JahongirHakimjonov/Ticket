@@ -165,7 +165,7 @@ def process_full_name(message, bot: TeleBot, order):
                     _("To'lovni amalga oshiring"),
                     url=GeneratePayLink(
                         order_id=order_id,
-                        amount=GeneratePayLink.to_sum(order.total_price * 100),
+                        amount=GeneratePayLink.to_tiyin(order.total_price),
                     ).generate_link(),
                 )
             ),

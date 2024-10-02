@@ -69,4 +69,4 @@ def any_user(message: Message, bot: TeleBot):
         bot.send_message(message.chat.id, _("Concert not found."))
     except Exception as e:
         bot.send_message(message.chat.id, _("An error occurred."))
-        print(e)
+        logger.error(f"Error in any_user: {e}")
