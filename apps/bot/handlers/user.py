@@ -27,7 +27,7 @@ def any_user(message: Message, bot: TeleBot):
             logger.info(f"User {message.from_user.id} started the bot.")
             concert_id = message.text.split(" ")[1]
             concert = Concert.objects.get(id=concert_id)
-            if concert.is_active and concert.date >= timezone.now():
+            if concert.is_active and concert.date >= timezone.now().date():
                 bot.send_photo(
                     message.chat.id,
                     photo=concert.photo,
