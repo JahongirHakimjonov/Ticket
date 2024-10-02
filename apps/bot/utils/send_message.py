@@ -5,7 +5,7 @@ from telebot import TeleBot
 
 from apps.bot.utils.language import set_language_code
 from apps.payme.utils.logging import logger
-from apps.ticket.models import BotUsers, Order
+from apps.ticket.models import BotUsers, Order, News
 
 bot = TeleBot(os.getenv("BOT_TOKEN"))
 
@@ -45,15 +45,18 @@ def send_message(order_id, message):
         logger.error(e)
 
 
-def send_news(user_id, title, content, image):
+def send_news(user_id, title, content, image, news_id):
     try:
         user = BotUsers.objects.get(id=user_id)
+        news = News.objects.get(id=news_id)
         activate(set_language_code(user.telegram_id))
         logger.info(f"Sending message to {user.telegram_id}")
         if not isinstance(user.telegram_id, int):
             raise ValueError("Invalid telegram_id: must be an integer")
+        if not image:
+            raise ValueError("Image must be non-empty")
         message = _(f"{title}\n\n{content}")
-        bot.send_photo(user.telegram_id, image, caption=message, parse_mode="Markdown")
+        bot.send_photo(user.telegram_id, news.image, caption=message, parse_mode="Markdown")
     except BotUsers.DoesNotExist:
         pass
     except ValueError as e:
