@@ -45,7 +45,7 @@ def send_message(order_id, message):
         logger.error(e)
 
 
-def send_news_to_subscribers(user_id, title, content, image):
+def send_news(user_id, title, content, image):
     try:
         user = BotUsers.objects.get(id=user_id)
         activate(set_language_code(user.telegram_id))
