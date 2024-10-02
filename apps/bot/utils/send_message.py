@@ -26,7 +26,7 @@ def send_telegram_message(order_id):
     except BotUsers.DoesNotExist:
         pass
     except ValueError as e:
-        print(e)
+        logger.error(e)
 
 
 def send_message(order_id, message):
@@ -42,4 +42,19 @@ def send_message(order_id, message):
     except BotUsers.DoesNotExist:
         pass
     except ValueError as e:
-        print(e)
+        logger.error(e)
+
+
+def send_news_to_subscribers(user_id, title, content, image):
+    try:
+        user = BotUsers.objects.get(id=user_id)
+        activate(set_language_code(user.telegram_id))
+        logger.info(f"Sending message to {user.telegram_id}")
+        if not isinstance(user.telegram_id, int):
+            raise ValueError("Invalid telegram_id: must be an integer")
+        message = _(f"{title}\n\n{content}")
+        bot.send_photo(user.telegram_id, image, caption=message, parse_mode="Markdown")
+    except BotUsers.DoesNotExist:
+        pass
+    except ValueError as e:
+        logger.error(e)

@@ -7,7 +7,8 @@ from apps.payme.models import MerchantTransactionsModel
 from apps.payment.choices import PaymentChoices
 from apps.payment.models import Payment
 from apps.ticket.models import Donate, Order
-from apps.ticket.utils import generate_ticket_qr_code
+from apps.ticket.models import News
+from apps.ticket.utils import generate_ticket_qr_code, send_news_to_subscribers
 
 
 @receiver(post_save, sender=MerchantTransactionsModel)
@@ -51,3 +52,9 @@ def check_order_status(sender, instance, **kwargs):
     if instance.is_paid:
         instance.seat.count -= instance.count
         instance.seat.save()
+
+
+@receiver(post_save, sender=News)
+def check_news_status(sender, instance, created, **kwargs):
+    if created:
+        send_news_to_subscribers(instance.id)
