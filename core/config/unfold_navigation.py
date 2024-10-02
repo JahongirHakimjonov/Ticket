@@ -128,7 +128,7 @@ PAGES = [
             },
             {
                 "title": _("Yangiliklar"),
-                "icon": "info",
+                "icon": "campaign",
                 "link": reverse_lazy("admin:ticket_news_changelist"),
                 "permission": lambda request: user_has_group_or_permission(
                     request.user, "view_news"
