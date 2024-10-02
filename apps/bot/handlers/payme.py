@@ -152,7 +152,7 @@ def process_full_name(message, bot: TeleBot, order):
             order_id=order_id,
             status="PROCESSING",
             type="ORDER",
-            amount=order.total_price,
+            amount=order.total_price * 100,
             transaction_id=order.id,
         )
 

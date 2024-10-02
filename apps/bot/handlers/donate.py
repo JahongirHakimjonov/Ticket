@@ -50,7 +50,7 @@ def handle_donation(call: CallbackQuery, bot: TeleBot):
         order_id=order_id,
         status="PROCESSING",
         type="DONATE",
-        amount=donate.amount,
+        amount=donate.amount * 100,
         transaction_id=donate.id,
     )
     pay_link = GeneratePayLink(
