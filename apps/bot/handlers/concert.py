@@ -54,9 +54,8 @@ def handle_concert(message: Message, bot: TeleBot):
             keyboard_markup.add(all_button)
 
             # Add the date buttons next
-            for date in concert_dates:
-                keyboard_button = KeyboardButton(str(date))
-                keyboard_markup.add(keyboard_button)
+            keyboard_button = KeyboardButton(str(concert_dates))
+            keyboard_markup.add(keyboard_button)
 
             # Add the "Home" button last
             home_button = KeyboardButton(_("Home"))
