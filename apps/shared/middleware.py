@@ -1,8 +1,10 @@
+# middleware.py
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, SuspiciousOperation
 from django.http import Http404
 from django.shortcuts import render
 from django.utils.deprecation import MiddlewareMixin
+
 
 class CustomErrorMiddleware(MiddlewareMixin):
     def process_exception(self, request, exception):

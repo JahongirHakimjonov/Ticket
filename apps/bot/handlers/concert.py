@@ -14,7 +14,12 @@ from apps.ticket.models import Concert  # Import the Concert model
 
 
 def handle_concert(message: Message, bot: TeleBot):
-    concert_dates = Concert.objects.filter(is_active=True).values_list("date", flat=True).distinct().first()
+    concert_dates = (
+        Concert.objects.filter(is_active=True)
+        .values_list("date", flat=True)
+        .distinct()
+        .first()
+    )
     activate(set_language_code(message.from_user.id))
     all_concerts = Concert.objects.filter(is_active=True, date__gte=timezone.now())
     if all_concerts.exists():

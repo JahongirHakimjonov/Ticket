@@ -34,7 +34,7 @@ logger.info("Starting bot...")
 # States
 db = Database()
 
-# Enable middlewares
+# Enable middleware
 apihelper.ENABLE_MIDDLEWARE = True
 logger.info("Middlewares enabled")
 

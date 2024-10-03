@@ -17,7 +17,7 @@ UNFOLD = {
             "rel": "icon",
             "sizes": "32x32",
             "type": "image/svg+xml",
-            "href": lambda request: static("images/felix.png"),
+            "href": lambda request: static("images/favicon.ico"),
         },
     ],
     "SITE_SYMBOL": "speed",
