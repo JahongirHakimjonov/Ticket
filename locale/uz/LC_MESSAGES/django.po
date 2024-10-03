@@ -109,7 +109,7 @@ msgstr "Bekor qilish"
 
 #: apps/bot/handlers/donate.py:32
 msgid "Select an amount to donate:"
-msgstr "Yordam qilish uchun miqdorni tanlang:"
+msgstr "Qo'llab-quvvatlash uchun miqdorni tanlang:"
 
 #: apps/bot/handlers/home.py:31 apps/bot/keyboard/home.py:7
 msgid "Concert"
