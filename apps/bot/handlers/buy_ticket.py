@@ -26,13 +26,9 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
             inline_markup = InlineKeyboardMarkup()
             if concert.map:
                 web_app = WebAppInfo(f"{os.getenv('BASE_URL')}{concert.map.url}")
-            else:
-                web_app = WebAppInfo(
-                    f"https://i.postimg.cc/J4Fznrz2/imihy.jpg"
+                inline_markup.add(
+                    InlineKeyboardButton(_("Sahna chizmasi"), web_app=web_app),
                 )
-            inline_markup.add(
-                InlineKeyboardButton(_("Sahna chizmasi"), web_app=web_app),
-            )
             for seat in seats:
                 inline_markup.add(
                     InlineKeyboardButton(
