@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import (
@@ -11,7 +12,6 @@ from apps.bot.logger import logger
 from apps.bot.utils import update_or_create_user
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert
-from django.utils import timezone
 
 
 def any_user(message: Message, bot: TeleBot):
@@ -23,6 +23,7 @@ def any_user(message: Message, bot: TeleBot):
                 username=message.from_user.username,
                 first_name=message.from_user.first_name,
                 last_name=message.from_user.last_name,
+                is_active=True,
             )
             logger.info(f"User {message.from_user.id} started the bot.")
             concert_id = message.text.split(" ")[1]
@@ -55,6 +56,7 @@ def any_user(message: Message, bot: TeleBot):
                 username=message.from_user.username,
                 first_name=message.from_user.first_name,
                 last_name=message.from_user.last_name,
+                is_active=True,
             )
             logger.info(f"User {message.from_user.id} started the bot.")
 

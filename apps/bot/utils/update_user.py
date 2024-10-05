@@ -8,6 +8,7 @@ def update_or_create_user(
     last_name=None,
     phone=None,
     language_code="uz",
+    is_active=True,
 ):
     """
     Update or create a user in the BotUsers model.
@@ -27,5 +28,6 @@ def update_or_create_user(
             "last_name": last_name,
             "phone": phone,
             "language_code": language_code,
+            "is_active": is_active,
         },
     )
