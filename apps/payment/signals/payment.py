@@ -57,4 +57,4 @@ def check_order_status(sender, instance, **kwargs):
 @receiver(post_save, sender=News)
 def check_news_status(sender, instance, created, **kwargs):
     if created:
-        send_news_to_subscribers(instance.id)
+        send_news_to_subscribers.delay(instance.id)
