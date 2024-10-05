@@ -1,3 +1,6 @@
+import os
+
+from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import (
     InlineKeyboardMarkup,
@@ -9,8 +12,6 @@ from telebot.types import (
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Seat, Concert
-from django.utils.translation import activate, gettext as _
-import os
 
 
 def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
