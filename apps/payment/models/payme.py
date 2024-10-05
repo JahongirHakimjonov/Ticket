@@ -23,7 +23,7 @@ class Payment(AbstractBaseModel):
     )
     type = models.CharField(max_length=100, choices=PaymentTypeChoices.choices)
 
-    amount = models.IntegerField()
+    amount = models.BigIntegerField(verbose_name="Amount in cents")
     message = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:

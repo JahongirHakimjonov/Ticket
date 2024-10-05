@@ -5,4 +5,4 @@ from apps.ticket.models import Info
 
 @register(Info)
 class InfoTranslationOptions(TranslationOptions):
-    fields = ("name", "description", "address")
+    fields = ("name", "description")

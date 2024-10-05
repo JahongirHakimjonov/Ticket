@@ -9,9 +9,6 @@ class Info(AbstractBaseModel):
     description = models.TextField(verbose_name=_("Tavsif"))
     phone = models.CharField(max_length=255, verbose_name=_("Telefon raqam"))
     username = models.CharField(max_length=255, verbose_name=_("Telegram username"))
-    email = models.EmailField(verbose_name=_("Email"))
-    location = models.URLField(max_length=255, verbose_name=_("Lokatsiya"))
-    address = models.CharField(max_length=255, verbose_name=_("Manzil"))
 
     def __str__(self):
         return self.name

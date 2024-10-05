@@ -1,10 +1,16 @@
 from telebot import TeleBot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from telebot.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    CallbackQuery,
+    WebAppInfo,
+)
 
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
-from apps.ticket.models import Seat
+from apps.ticket.models import Seat, Concert
 from django.utils.translation import activate, gettext as _
+import os
 
 
 def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
@@ -13,10 +19,15 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
         concert_id = int(call.data.split("_")[2])
         logger.info(f"Concert ID: {concert_id}")
         seats = Seat.objects.filter(concert_id=concert_id, is_active=True, count__gt=0)
+        concert = Concert.objects.get(id=concert_id)
         logger.info(f"Seats found: {seats.count()}")
 
         if seats.exists():
             inline_markup = InlineKeyboardMarkup()
+            web_app = WebAppInfo(f"{os.getenv('BASE_URL')}{concert.map.url}")
+            inline_markup.add(
+                InlineKeyboardButton(_("Sahna chizmasi"), web_app=web_app),
+            )
             for seat in seats:
                 inline_markup.add(
                     InlineKeyboardButton(

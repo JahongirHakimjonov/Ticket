@@ -39,6 +39,13 @@ class Concert(AbstractBaseModel):
         blank=True,
         null=True,
     )
+    map = models.ImageField(
+        upload_to="concerts/map",
+        verbose_name=_("Karta"),
+        null=True,
+        blank=True,
+        validators=[FileExtensionValidator(allowed_extensions=["jpg", "png"])],
+    )
 
     def __str__(self):
         return self.name

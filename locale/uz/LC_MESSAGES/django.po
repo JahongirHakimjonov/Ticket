@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-30 17:58+0500\n"
+"POT-Creation-Date: 2024-10-05 11:33+0500\n"
 "PO-Revision-Date: 2024-09-30 17:59+0500\n"
 "Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,17 +31,21 @@ msgstr "Sizda hech qanday chipta mavjud emas."
 msgid "Chiptani yuklab bo'lmadi, fayl topilmadi."
 msgstr "Chiptani yuklab bo'lmadi, fayl topilmadi."
 
-#: apps/bot/handlers/buy_ticket.py:24
+#: apps/bot/handlers/buy_ticket.py:23
+msgid "Sahna chizmasi"
+msgstr "Sahna chizmasi"
+
+#: apps/bot/handlers/buy_ticket.py:29
 #, fuzzy
 #| msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 msgid "{seat.name} - {seat.price:,} UZS, Mavjud \\ Есть: {seat.count}"
 msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 
-#: apps/bot/handlers/buy_ticket.py:38
+#: apps/bot/handlers/buy_ticket.py:44
 msgid "No seats available for this concert."
 msgstr "Bu konsert uchun o‘rindiqlar mavjud emas."
 
-#: apps/bot/handlers/buy_ticket.py:41 apps/bot/handlers/select_count.py:61
+#: apps/bot/handlers/buy_ticket.py:47 apps/bot/handlers/select_count.py:68
 #: apps/bot/handlers/select_seat.py:66 apps/bot/handlers/select_seat.py:69
 #: apps/bot/handlers/selection_date.py:72 apps/bot/handlers/user.py:71
 msgid "An error occurred."
@@ -63,7 +67,7 @@ msgstr "Payme tanlandi."
 msgid "Unknown action."
 msgstr "Noma'lum harakat."
 
-#: apps/bot/handlers/concert.py:30
+#: apps/bot/handlers/concert.py:33
 #, python-brace-format
 msgid ""
 "{concert_details.name}\n"
@@ -72,34 +76,34 @@ msgid ""
 "\n"
 msgstr ""
 
-#: apps/bot/handlers/concert.py:40 apps/bot/handlers/selection_date.py:33
+#: apps/bot/handlers/concert.py:43 apps/bot/handlers/selection_date.py:33
 #: apps/bot/handlers/selection_date.py:62 apps/bot/handlers/user.py:45
 msgid "Buy Tickets"
 msgstr "Sotib olish"
 
-#: apps/bot/handlers/concert.py:49
+#: apps/bot/handlers/concert.py:52
 msgid "Search Concerts"
 msgstr "Konsertlarni qidirish"
 
-#: apps/bot/handlers/concert.py:55 apps/bot/handlers/home.py:41
+#: apps/bot/handlers/concert.py:58 apps/bot/handlers/home.py:41
 #: apps/bot/handlers/selection_date.py:14
 msgid "All"
 msgstr "Barchasi"
 
-#: apps/bot/handlers/concert.py:64 apps/bot/handlers/home.py:49
+#: apps/bot/handlers/concert.py:66 apps/bot/handlers/home.py:49
 #: apps/bot/handlers/ticket.py:13
 msgid "Home"
 msgstr "Bosh sahifa"
 
-#: apps/bot/handlers/concert.py:72
+#: apps/bot/handlers/concert.py:74
 msgid "Please select a concert date or search for concerts:"
 msgstr "Konsert sanasini tanlang yoki kontsertlarni qidiring:"
 
-#: apps/bot/handlers/concert.py:77
+#: apps/bot/handlers/concert.py:79
 msgid "Available concert dates:"
 msgstr "Mavjud kontsert sanalari:"
 
-#: apps/bot/handlers/concert.py:81
+#: apps/bot/handlers/concert.py:83
 msgid "No active concerts available."
 msgstr "Faol konsertlar mavjud emas."
 
@@ -166,7 +170,7 @@ msgstr "Rahmat, {full_name}. Endi telefon raqamingizni kiriting:"
 msgid "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 msgstr "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 
-#: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:46
+#: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:53
 msgid "Select Payment"
 msgstr "To'lov turini tanlang"
 
@@ -213,11 +217,11 @@ msgstr "Payme tanlandi."
 msgid "To'lovni amalga oshiring"
 msgstr "To'lovni amalga oshiring"
 
-#: apps/bot/handlers/select_count.py:34
+#: apps/bot/handlers/select_count.py:39
 msgid "Ushbu konsert uchun 50 dan ortiq chipta xarid qila olmaysiz."
 msgstr "Ushbu konsert uchun 50 dan ortiq chipta xarid qila olmaysiz."
 
-#: apps/bot/handlers/select_count.py:59
+#: apps/bot/handlers/select_count.py:66
 #, python-brace-format
 msgid "{count} tickets selected."
 msgstr "{count} ta chipta tanlandi."
@@ -285,11 +289,20 @@ msgstr "Siz so'rovni juda tez yuborayapsiz"
 
 #: apps/bot/utils/send_message.py:23
 msgid ""
-"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim bo'limidan olishingiz mumkin)\n"
+"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim "
+"bo'limidan olishingiz mumkin)\n"
 "\n"
 msgstr ""
 "To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim "
 "bo'limidan olishingiz mumkin)\n"
+
+#: apps/bot/utils/send_message.py:62
+#, python-brace-format
+msgid ""
+"{title}\n"
+"\n"
+"{content}"
+msgstr ""
 
 #: apps/payme/models.py:18
 msgid "Transaction ID"
@@ -396,7 +409,7 @@ msgid "Aktivmi"
 msgstr ""
 
 #: apps/ticket/filters/concert.py:8 apps/ticket/filters/concert.py:28
-#: apps/ticket/models/concert.py:49 core/config/unfold.py:77
+#: apps/ticket/models/concert.py:56 core/config/unfold.py:77
 #: core/config/unfold_navigation.py:51 core/config/unfold_navigation.py:54
 msgid "Konsertlar"
 msgstr ""
@@ -406,7 +419,7 @@ msgstr ""
 msgid "Nomi"
 msgstr ""
 
-#: apps/ticket/models/concert.py:14
+#: apps/ticket/models/concert.py:14 apps/ticket/models/news.py:15
 msgid "Sarlavha"
 msgstr ""
 
@@ -430,7 +443,7 @@ msgstr ""
 msgid "Eng qimmat narx"
 msgstr ""
 
-#: apps/ticket/models/concert.py:24 apps/ticket/models/info.py:14
+#: apps/ticket/models/concert.py:24
 msgid "Manzil"
 msgstr ""
 
@@ -442,7 +455,7 @@ msgstr ""
 msgid "Yandex Maps manzili"
 msgstr ""
 
-#: apps/ticket/models/concert.py:33
+#: apps/ticket/models/concert.py:33 apps/ticket/models/news.py:18
 msgid "Rasm"
 msgstr ""
 
@@ -450,7 +463,11 @@ msgstr ""
 msgid "Mini rasm"
 msgstr ""
 
-#: apps/ticket/models/concert.py:48 apps/ticket/models/order.py:13
+#: apps/ticket/models/concert.py:44
+msgid "Karta"
+msgstr ""
+
+#: apps/ticket/models/concert.py:55 apps/ticket/models/order.py:13
 msgid "Konsert"
 msgstr ""
 
@@ -484,21 +501,29 @@ msgstr ""
 msgid "Telegram username"
 msgstr ""
 
-#: apps/ticket/models/info.py:12
-msgid "Email"
-msgstr ""
-
-#: apps/ticket/models/info.py:13
-msgid "Lokatsiya"
-msgstr ""
-
-#: apps/ticket/models/info.py:21
+#: apps/ticket/models/info.py:18
 msgid "Ma'lumot"
 msgstr ""
 
-#: apps/ticket/models/info.py:22 core/config/unfold_navigation.py:119
+#: apps/ticket/models/info.py:19 core/config/unfold_navigation.py:119
 #: core/config/unfold_navigation.py:122
 msgid "Ma'lumotlar"
+msgstr ""
+
+#: apps/ticket/models/news.py:11
+msgid "Rasm hajmi 5 MB dan katta bo'lmasligi kerak."
+msgstr ""
+
+#: apps/ticket/models/news.py:16
+msgid "Maqola"
+msgstr ""
+
+#: apps/ticket/models/news.py:23
+msgid "Yangilik"
+msgstr ""
+
+#: apps/ticket/models/news.py:24 core/config/unfold_navigation.py:130
+msgid "Yangiliklar"
 msgstr ""
 
 #: apps/ticket/models/order.py:15 apps/ticket/models/seat.py:20
@@ -634,11 +659,11 @@ msgstr ""
 msgid "Transaksiyalar"
 msgstr ""
 
-#: core/settings.py:101
+#: core/settings.py:102
 msgid "O'zbekcha"
 msgstr ""
 
-#: core/settings.py:102
+#: core/settings.py:103
 msgid "Русский"
 msgstr ""
 
