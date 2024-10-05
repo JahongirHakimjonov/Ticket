@@ -44,6 +44,7 @@ class Concert(AbstractBaseModel):
         verbose_name=_("Karta"),
         null=True,
         blank=True,
+        default="/static/images/404.jpg",
         validators=[FileExtensionValidator(allowed_extensions=["jpg", "png"])],
     )
 
