@@ -12,6 +12,7 @@ class BotUsersAdmin(ModelAdmin):
         "username",
         "phone",
         "language_code",
+        "is_active",
     )
     list_filter = ("is_active", "role", "language_code")
     search_fields = ("first_name", "last_name", "phone", "username")
