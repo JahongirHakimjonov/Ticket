@@ -15,7 +15,7 @@ def handle_info(message: Message, bot: TeleBot):
 
     for info in infos:
         text = (
-            f"{info.name}\n\n{info.description}\n\n*☎️Telefon \ Телефон:* {info.phone}\n\n"
+            f"{info.name}\n\n{info.description}\n\n*☎️Telefon \\ Телефон:* {info.phone}\n\n"
             f"📱Telegram: {info.username}"
         )
         bot.send_message(
