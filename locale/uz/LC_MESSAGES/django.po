@@ -126,7 +126,7 @@ msgstr "Donat"
 
 #: apps/bot/handlers/home.py:35 apps/bot/keyboard/home.py:9
 msgid "My Tickets"
-msgstr "Biletlarim"
+msgstr "Biletlar"
 
 #: apps/bot/handlers/home.py:37 apps/bot/keyboard/home.py:10
 msgid "Info"
