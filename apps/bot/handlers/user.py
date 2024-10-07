@@ -25,6 +25,7 @@ def any_user(message: Message, bot: TeleBot):
                 last_name=message.from_user.last_name,
                 is_active=True,
             )
+            activate(set_language_code(message.from_user.id))
             logger.info(f"User {message.from_user.id} started the bot.")
             concert_id = message.text.split(" ")[1]
             concert = Concert.objects.get(id=concert_id)
@@ -59,7 +60,7 @@ def any_user(message: Message, bot: TeleBot):
                 is_active=True,
             )
             logger.info(f"User {message.from_user.id} started the bot.")
-
+            activate(set_language_code(message.from_user.id))
             bot.send_message(
                 message.chat.id,
                 _(
