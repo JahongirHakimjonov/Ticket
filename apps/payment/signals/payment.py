@@ -13,7 +13,7 @@ from apps.ticket.utils import generate_ticket_qr_code, send_news_to_subscribers
 
 @receiver(post_save, sender=MerchantTransactionsModel)
 def check_payme_status(sender, instance, **kwargs):
-    if instance.state == int(1):
+    if instance.state == int(2):
         payment = Payment.objects.get(order_id=instance.order_id)
         payment.status = PaymentChoices.COMPLETED
         payment.transaction_id = instance.transaction_id
