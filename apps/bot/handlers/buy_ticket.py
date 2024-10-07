@@ -19,7 +19,7 @@ def handle_buy_ticket_callback(call: CallbackQuery, bot: TeleBot):
         activate(set_language_code(call.from_user.id))
         concert_id = int(call.data.split("_")[2])
         logger.info(f"Concert ID: {concert_id}")
-        seats = Seat.objects.filter(concert_id=concert_id, is_active=True, count__gt=0)
+        seats = Seat.objects.filter(concert_id=concert_id, is_active=True, count__gt=0).order_by("created_at")
         concert = Concert.objects.get(id=concert_id)
         logger.info(f"Seats found: {seats.count()}")
 
