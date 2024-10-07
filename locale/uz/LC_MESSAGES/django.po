@@ -43,7 +43,7 @@ msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 
 #: apps/bot/handlers/buy_ticket.py:44
 msgid "No seats available for this concert."
-msgstr "Bu konsert uchun o‘rindiqlar mavjud emas."
+msgstr "Sotib olish tez kunda ishga tushadi."
 
 #: apps/bot/handlers/buy_ticket.py:47 apps/bot/handlers/select_count.py:68
 #: apps/bot/handlers/select_seat.py:66 apps/bot/handlers/select_seat.py:69
