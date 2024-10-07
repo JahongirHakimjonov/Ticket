@@ -121,9 +121,9 @@ def process_full_name(message, bot: TeleBot, order):
         order.save()
 
         # To'lov haqida ma'lumot yuborish
-        # info = Info.objects.all().last()
-        # if info.username is None:
-        #     info.username = "???"
+        info = Info.objects.all().last() or Info(username="???")
+        if info.username is None:
+            info.username = "???"
         # if info.phone is None:
         #     info.phone = "???"
         if set_language_code(message.from_user.id) == "uz":
@@ -131,6 +131,7 @@ def process_full_name(message, bot: TeleBot, order):
                 message.chat.id,
                 _(
                     f"Sizning buyurtmangiz qabul qilindi,\nBuyurtmaning umumiy summasi {order.total_price:,} so'm.\n"
+                    f"Operator bilan bog'lanish uchun 👉 {info.username}"
                 ),
                 reply_markup=get_main_buttons(),
             )
@@ -139,6 +140,7 @@ def process_full_name(message, bot: TeleBot, order):
                 message.chat.id,
                 _(
                     f"Ваш заказ принят,\nОбщая сумма заказа {order.total_price:,} сум.\n"
+                    f"Для связи с оператором 👉 {info.username}"
                 ),
                 reply_markup=get_main_buttons(),
             )
