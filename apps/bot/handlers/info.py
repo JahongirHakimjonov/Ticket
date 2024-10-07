@@ -15,12 +15,10 @@ def handle_info(message: Message, bot: TeleBot):
 
     for info in infos:
         text = (
-            f"{info.name}\n\n{info.description}\n\n"
+            f"{info.name}\n\n{info.description}\n"
             f"{info.username}"
         )
         bot.send_message(
             message.chat.id,
             text=text,
-            disable_web_page_preview=True,
-            parse_mode="Markdown",
         )
