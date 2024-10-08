@@ -1,7 +1,14 @@
+import os
+
 from django.utils import timezone
 from django.utils.translation import activate, gettext as _
-from telebot import TeleBot, types
-from telebot.types import Message
+from telebot import TeleBot
+from telebot.types import (
+    Message,
+    InlineKeyboardMarkup,
+    WebAppInfo,
+    InlineKeyboardButton,
+)
 
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
@@ -18,9 +25,21 @@ def handle_ticket(message: Message, bot: TeleBot):
         bot.send_message(message.chat.id, _("Sizda faol chiptalar mavjud emas."))
         return
 
+    inline_markup = InlineKeyboardMarkup()
+
+    if orders[0].order.seat.concert and orders[0].order.seat.concert.map:
+        web_app = WebAppInfo(
+            f"{os.getenv('BASE_URL')}{orders[0].order.seat.concert.map.url}"
+        )
+        inline_markup.add(
+            InlineKeyboardButton(_("Sahna chizmasi"), web_app=web_app),
+        )
+
     for order in orders:
-        text = order.ticket_id
-        bot.send_document(message.chat.id, order.ticket, caption=text)
+        text = f"{order.seat}\n\nID: {order.ticket_id}"
+        bot.send_document(
+            message.chat.id, order.ticket, caption=text, reply_markup=inline_markup
+        )
         logger.info(f"Active ticket sent to user {user.id}")
     # btn_active_tickets = types.KeyboardButton(_("Active Tickets"))
     # btn_all_tickets = types.KeyboardButton(_("All Tickets"))

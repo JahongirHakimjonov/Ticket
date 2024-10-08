@@ -4,5 +4,7 @@ from .info import *  # noqa
 from .news import *  # noqa
 from .order import *  # noqa
 from .seat import *  # noqa
+from .seat_number import *  # noqa
+from .seat_type import *  # noqa
 from .ticket import *  # noqa
 from .users import *  # noqa
