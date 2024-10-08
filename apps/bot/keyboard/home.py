@@ -1,5 +1,5 @@
+from django.utils.translation import gettext as _
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
-from django.utils.translation import activate, gettext as _
 
 
 def get_main_buttons():

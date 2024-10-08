@@ -17,6 +17,8 @@ class OrderAdmin(ModelAdmin):
     search_fields = ("user__username", "user__phone", "user__telegram_id")
     list_filter = ("is_paid", "is_confirmed", ConcertFilter)
     actions = ["make_active", "make_inactive"]
+    list_horizontal_scrollbar_top = True
+    filter_horizontal = ("seat_numbers",)
     date_hierarchy = "created_at"
     list_filter_submit = True
 

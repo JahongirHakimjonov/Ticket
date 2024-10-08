@@ -71,6 +71,8 @@ UNFOLD = {
             "models": [
                 "ticket.concert",
                 "ticket.seat",
+                "ticket.seatnumber",
+                "ticket.seattype",
             ],
             "items": [
                 {
@@ -78,8 +80,16 @@ UNFOLD = {
                     "link": reverse_lazy("admin:ticket_concert_changelist"),
                 },
                 {
-                    "title": _("O'rindiqlar"),
+                    "title": _("Qatorlar"),
                     "link": reverse_lazy("admin:ticket_seat_changelist"),
+                },
+                {
+                    "title": _("O'rindiqlar"),
+                    "link": reverse_lazy("admin:ticket_seatnumber_changelist"),
+                },
+                {
+                    "title": _("Qator turlari"),
+                    "link": reverse_lazy("admin:ticket_seattype_changelist"),
                 },
             ],
         },
