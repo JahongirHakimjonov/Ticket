@@ -11,7 +11,7 @@ class SeatNumber(AbstractBaseModel):
     number = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.number
+        return f"{self.seat.name} - {self.number}"
 
     class Meta:
         db_table = "seat_number"

@@ -11,8 +11,11 @@ class TicketAdmin(ModelAdmin):
     TicketAdmin class
     """
 
-    list_display = ["id", "ticket_id", "created_at", "seat", "is_active"]
+    list_display = ["id", "ticket_id", "created_at", "seat", "full_name", "is_active"]
     list_editable = ["is_active"]
     search_fields = ["ticket_id"]
     list_filter = ["is_active", TicketConcertFilter]
     list_filter_submit = True
+
+    def full_name(self, obj):
+        return obj.order.full_name
