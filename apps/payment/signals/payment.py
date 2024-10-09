@@ -3,13 +3,14 @@ from django.db.models.signals import m2m_changed
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from apps.bot.utils.send_message import send_message
 from apps.payme.models import MerchantTransactionsModel
 from apps.payment.choices import PaymentChoices
 from apps.payment.models import Payment
-from apps.ticket.models import News
+from apps.ticket.models import News, Donate
 from apps.ticket.models import Order
 from apps.ticket.models import Seat, SeatNumber
-from apps.ticket.utils import send_news_to_subscribers
+from apps.ticket.utils import send_news_to_subscribers, generate_ticket_qr_code
 
 
 @receiver(m2m_changed, sender=Order.seat_numbers.through)
@@ -64,7 +65,7 @@ def check_payme_status(sender, instance, **kwargs):
 #
 #                 send_telegram_message(order_id)
 #                 generate_ticket_qr_code.delay(order_id)
-
+#
 #
 # @receiver(post_save, sender=Order)
 # def check_order_status(sender, instance, **kwargs):

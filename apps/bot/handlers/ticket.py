@@ -19,7 +19,7 @@ def handle_ticket(message: Message, bot: TeleBot):
     activate(set_language_code(message.from_user.id))
     user = BotUsers.objects.get(telegram_id=message.from_user.id)
     orders = Ticket.objects.filter(
-        order__user_id=user.id, order__concert__date__gte=timezone.now(), is_active=True
+        order__user_id=user.id, order__concert__date__gte=timezone.now()
     )
     if not orders.exists():
         bot.send_message(message.chat.id, _("Sizda faol chiptalar mavjud emas."))

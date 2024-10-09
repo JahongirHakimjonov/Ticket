@@ -22,7 +22,6 @@ from apps.bot.handlers.user import any_user
 from apps.bot.middlewares import antispam_func
 from apps.bot.handlers.home import handle_message
 from apps.bot.middlewares import set_language
-from apps.bot.utils.database import Database
 from telebot import TeleBot, apihelper
 from apps.bot.query import query_text
 from apps.bot.logger import logger  # Import logger from the new module
@@ -31,8 +30,6 @@ from apps.bot.handlers.callback import handle_callback_query
 # Log a message to indicate the bot is starting
 logger.info("Starting bot...")
 
-# States
-db = Database()
 
 # Enable middleware
 apihelper.ENABLE_MIDDLEWARE = True
