@@ -3,14 +3,13 @@ from django.db.models.signals import m2m_changed
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from apps.bot.utils.send_message import send_message
 from apps.payme.models import MerchantTransactionsModel
 from apps.payment.choices import PaymentChoices
 from apps.payment.models import Payment
-from apps.ticket.models import Donate, Seat, SeatNumber
 from apps.ticket.models import News
 from apps.ticket.models import Order
-from apps.ticket.utils import generate_ticket_qr_code, send_news_to_subscribers
+from apps.ticket.models import Seat, SeatNumber
+from apps.ticket.utils import send_news_to_subscribers
 
 
 @receiver(m2m_changed, sender=Order.seat_numbers.through)
@@ -82,5 +81,6 @@ def check_news_status(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Seat)
 def create_seat_numbers(sender, instance, created, **kwargs):
-    for i in range(1, instance.count + 1):
-        SeatNumber.objects.create(seat=instance, number=i)
+    if created:
+        for i in range(1, instance.count + 1):
+            SeatNumber.objects.create(seat=instance, number=i)
