@@ -11,8 +11,8 @@ class TicketAdmin(ModelAdmin):
     TicketAdmin class
     """
 
-    list_display = ["id", "ticket_id", "created_at", "seat", "full_name", "is_active"]
-    list_editable = ["is_active"]
+    list_display = ["id", "seat_id", "seat_number", "seat", "full_name", "is_active"]
+    list_editable = ["is_active", "seat_id", "seat_number", "seat"]
     search_fields = ["ticket_id"]
     list_filter = ["is_active", TicketConcertFilter]
     list_filter_submit = True
