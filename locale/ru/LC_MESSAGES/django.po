@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-09 15:34+0500\n"
-"PO-Revision-Date: 2024-09-30 17:59+0500\n"
+"PO-Revision-Date: 2024-10-09 17:20+0500\n"
 "Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: apps/bot/handlers/active_ticket.py:18 apps/bot/handlers/ticket.py:25
@@ -34,10 +32,9 @@ msgid "Chiptani yuklab bo'lmadi, fayl topilmadi."
 msgstr "Не удалось загрузить билет, файл не найден."
 
 #: apps/bot/handlers/buy_ticket.py:39 apps/bot/handlers/callback.py:42
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "Joylashuvni tanlang"
-msgstr "Выберите номер"
+msgstr "Выберите сторона👇"
 
 #: apps/bot/handlers/buy_ticket.py:45 apps/bot/handlers/select_count.py:58
 #: apps/bot/handlers/select_count.py:142 apps/bot/handlers/select_seat.py:41
@@ -62,17 +59,15 @@ msgid "An error occurred."
 msgstr "Произошла ошибка."
 
 #: apps/bot/handlers/callback.py:33 apps/bot/handlers/select_seat.py:33
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "Qatorni tanlang"
-msgstr "Выберите номер"
+msgstr "Выберите ряд👇"
 
 #: apps/bot/handlers/callback.py:36 apps/bot/handlers/select_count.py:52
 #: apps/bot/handlers/select_count.py:136
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "O'rindiqni tanlang"
-msgstr "Выберите номер"
+msgstr "Выберите место👇"
 
 #: apps/bot/handlers/callback.py:39
 msgid "To'lov turini tanlang"
@@ -190,7 +185,7 @@ msgstr "Спасибо, ваш номер телефона: {phone}. Ваш за
 
 #: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:197
 msgid "Select Payment"
-msgstr "Выберите способ оплаты"
+msgstr "Выберите способ оплаты👇"
 
 #: apps/bot/handlers/payme.py:55
 msgid "📞 Telefon raqamni yuboring"
@@ -256,20 +251,19 @@ msgstr "Назад"
 
 #: apps/bot/handlers/select_count.py:96
 msgid "Set numbers loaded."
-msgstr ""
+msgstr "Номера мест загружены."
 
 #: apps/bot/handlers/select_count.py:174
 msgid "Set number selection updated."
-msgstr ""
+msgstr "Выбор номера набора обновлен."
 
 #: apps/bot/handlers/select_count.py:209
-#, fuzzy
 #| msgid "Language updated successfully!"
 msgid "Order created successfully."
-msgstr "Язык успешно обновлен!"
+msgstr "Заказ успешно создан."
 
 #: apps/bot/handlers/select_seat.py:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 msgid "{seat.name} - {seat.price} UZS"
 msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
@@ -325,8 +319,7 @@ msgstr "Вы делаете запрос слишком часто"
 
 #: apps/bot/utils/send_message.py:23
 msgid ""
-"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim "
-"bo'limidan olishingiz mumkin)\n"
+"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim bo'limidan olishingiz mumkin)\n"
 "\n"
 msgstr "Оплата прошла успешно! Билеты (доступны в разделе «Мои билеты»)\n"
 
@@ -912,8 +905,8 @@ msgstr ""
 #~ msgstr "Адрес электронной почты"
 
 #~ msgid ""
-#~ "The groups this user belongs to. A user will get all permissions granted "
-#~ "to each of their groups."
+#~ "The groups this user belongs to. A user will get all permissions granted to "
+#~ "each of their groups."
 #~ msgstr ""
 #~ "Группы, к которым принадлежит этот пользователь. Пользователь получит все "
 #~ "разрешения, предоставленные каждой из их групп."

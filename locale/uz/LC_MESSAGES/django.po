@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-09 15:34+0500\n"
-"PO-Revision-Date: 2024-09-30 17:59+0500\n"
+"PO-Revision-Date: 2024-10-09 17:21+0500\n"
 "Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -32,10 +32,9 @@ msgid "Chiptani yuklab bo'lmadi, fayl topilmadi."
 msgstr "Chiptani yuklab bo'lmadi, fayl topilmadi."
 
 #: apps/bot/handlers/buy_ticket.py:39 apps/bot/handlers/callback.py:42
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "Joylashuvni tanlang"
-msgstr "Sonini tanlang"
+msgstr "Joylashuvni tanlang👇"
 
 #: apps/bot/handlers/buy_ticket.py:45 apps/bot/handlers/select_count.py:58
 #: apps/bot/handlers/select_count.py:142 apps/bot/handlers/select_seat.py:41
@@ -60,17 +59,15 @@ msgid "An error occurred."
 msgstr "Xatolik yuz berdi."
 
 #: apps/bot/handlers/callback.py:33 apps/bot/handlers/select_seat.py:33
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "Qatorni tanlang"
-msgstr "Sonini tanlang"
+msgstr "Qatorni tanlang👇"
 
 #: apps/bot/handlers/callback.py:36 apps/bot/handlers/select_count.py:52
 #: apps/bot/handlers/select_count.py:136
-#, fuzzy
 #| msgid "Sonini tanlang"
 msgid "O'rindiqni tanlang"
-msgstr "Sonini tanlang"
+msgstr "O'rindiqni tanlang👇"
 
 #: apps/bot/handlers/callback.py:39
 msgid "To'lov turini tanlang"
@@ -188,7 +185,7 @@ msgstr "Rahmat, telefon raqamingiz: {phone}. Buyurtmangiz qabul qilindi."
 
 #: apps/bot/handlers/payme.py:37 apps/bot/handlers/select_count.py:197
 msgid "Select Payment"
-msgstr "To'lov turini tanlang"
+msgstr "To'lov turini tanlang👇"
 
 #: apps/bot/handlers/payme.py:55
 msgid "📞 Telefon raqamni yuboring"
@@ -235,7 +232,7 @@ msgstr "To'lovni amalga oshiring"
 
 #: apps/bot/handlers/select_count.py:31
 msgid "Seat does not exist."
-msgstr ""
+msgstr "Joy mavjud emas."
 
 #: apps/bot/handlers/select_count.py:69 apps/bot/handlers/select_count.py:148
 msgid ""
@@ -245,7 +242,7 @@ msgstr ""
 
 #: apps/bot/handlers/select_count.py:79 apps/bot/handlers/select_count.py:158
 msgid "Tasdiqlash"
-msgstr ""
+msgstr "Tasdiqlash"
 
 #: apps/bot/handlers/select_count.py:85 apps/bot/handlers/select_count.py:164
 #: apps/bot/handlers/select_seat.py:55
@@ -254,20 +251,19 @@ msgstr "Ortga"
 
 #: apps/bot/handlers/select_count.py:96
 msgid "Set numbers loaded."
-msgstr ""
+msgstr "Joylar yuklandi."
 
 #: apps/bot/handlers/select_count.py:174
 msgid "Set number selection updated."
-msgstr ""
+msgstr "Joylar yangilandi."
 
 #: apps/bot/handlers/select_count.py:209
-#, fuzzy
 #| msgid "Language updated successfully!"
 msgid "Order created successfully."
-msgstr "Til muvaffaqiyatli almashtirildi"
+msgstr "Buyurtma muvaffaqiyatli yaratildi."
 
 #: apps/bot/handlers/select_seat.py:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
 msgid "{seat.name} - {seat.price} UZS"
 msgstr "{seat.name} - {seat.price:,} UZS, Mavjud: {seat.count}"
@@ -323,8 +319,7 @@ msgstr "Siz so'rovni juda tez yuborayapsiz"
 
 #: apps/bot/utils/send_message.py:23
 msgid ""
-"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim "
-"bo'limidan olishingiz mumkin)\n"
+"To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim bo'limidan olishingiz mumkin)\n"
 "\n"
 msgstr ""
 "To'lov muvaffaqiyatli amalga oshirildi! Biletlarni (Mening biletlarim "
