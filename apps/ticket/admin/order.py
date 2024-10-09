@@ -10,6 +10,7 @@ class OrderAdmin(ModelAdmin):
     list_display = (
         "id",
         "user",
+        "full_name",
         "total_price",
         "created_at",
         "is_paid",
