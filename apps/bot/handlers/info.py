@@ -14,10 +14,7 @@ def handle_info(message: Message, bot: TeleBot):
         return
 
     for info in infos:
-        text = (
-            f"{info.name}\n\n{info.description}\n"
-            f"{info.username}"
-        )
+        text = f"{info.name}\n\n{info.description}\n" f"{info.username}"
         bot.send_message(
             message.chat.id,
             text=text,

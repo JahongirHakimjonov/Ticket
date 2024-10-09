@@ -1,50 +1,60 @@
+import os
+
+from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.apihelper import ApiTelegramException
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from telebot.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    CallbackQuery,
+    WebAppInfo,
+)
 
+from apps.bot.handlers.select_count import selected_set_numbers
 from apps.bot.logger import logger
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Seat
-from django.utils.translation import activate, gettext as _
 
 
 def handle_select_seat_callback(call: CallbackQuery, bot: TeleBot):
     try:
+        user_id = call.from_user.id
+        selected_set_numbers.pop(user_id, None)
         activate(set_language_code(call.from_user.id))
-        seat_id = int(call.data.split("_")[2])
-        seat = Seat.objects.get(id=seat_id)
-        logger.info(f"Seat selected: {seat.name}")
-
+        seat_type_id = int(call.data.split("_")[2])
+        concert_id = int(call.data.split("_")[3])
+        seats = Seat.objects.filter(
+            type_id=seat_type_id, count__gt=0, concert_id=concert_id, is_active=True
+        ).order_by("created_at")
         inline_markup = InlineKeyboardMarkup()
-        buttons = []
 
         # Add "Select Quantity" button at the top
         inline_markup.add(
-            InlineKeyboardButton(_("Select Quantity"), callback_data="noop")
+            InlineKeyboardButton(_("Qatorni tanlang"), callback_data="noop")
         )
 
-        if seat.count > 50:
-            max_buttons = 50
-        else:
-            max_buttons = seat.count
+        if seats.exists():
+            concert = seats.first().concert  # Access the concert through the first seat
+            if concert and concert.map:
+                web_app = WebAppInfo(f"{os.getenv('BASE_URL')}{concert.map.url}")
+                inline_markup.add(
+                    InlineKeyboardButton(_("Sahna chizmasi"), web_app=web_app),
+                )
 
-        for i in range(1, max_buttons + 1):
-            buttons.append(
+            for seat in seats:
+                inline_markup.add(
+                    InlineKeyboardButton(
+                        _(f"{seat.name} - {seat.price} UZS"),
+                        callback_data=f"select_count_{seat.id}",
+                    )
+                )
+
+            # Add "Back" button at the bottom
+            inline_markup.add(
                 InlineKeyboardButton(
-                    str(i), callback_data=f"select_count_{seat_id}_{i}"
+                    _("Back"), callback_data=f"buy_ticket_{concert.id}"
                 )
             )
-
-        # Add buttons in rows of 5
-        for i in range(0, len(buttons), 5):
-            inline_markup.row(*buttons[i : i + 5])
-
-        # Add "Back" button at the bottom
-        inline_markup.add(
-            InlineKeyboardButton(
-                _("Back"), callback_data=f"buy_ticket_{seat.concert.id}"
-            )
-        )
 
         # Check if the new reply markup is different from the current one
         if call.message.reply_markup.to_dict() != inline_markup.to_dict():

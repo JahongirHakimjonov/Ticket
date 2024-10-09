@@ -1,5 +1,6 @@
-import uuid
 import os
+import uuid
+
 import qrcode
 from celery import shared_task
 from celery.exceptions import MaxRetriesExceededError
@@ -12,7 +13,7 @@ from apps.ticket.models import Ticket, Order
 def generate_ticket_qr_code(self, order_id):
     try:
         order = Order.objects.get(id=order_id)
-        for _ in range(order.count):
+        for seat_number in order.seat_numbers.all():
             ticket_id = str(f"{order_id}_{uuid.uuid4()}")
             ticket_id_url = (
                 f"{os.getenv('BASE_URL')}/admin/ticket/ticket/?q={ticket_id}"
@@ -37,8 +38,12 @@ def generate_ticket_qr_code(self, order_id):
                 ticket=ContentFile(
                     open(qr_code_path, "rb").read(), name=f"{ticket_id}.png"
                 ),
-                seat=order.seat.name,
+                seat=f"Joylashuv / Расположение: {order.seat.type.name}\nQator / Ряд: {order.seat.name}\nJoy / Место: {seat_number.number}",
+                seat_id=order.seat,
+                seat_number=seat_number,
             )
+            seat_number.is_active = False
+            seat_number.save()
     except Order.DoesNotExist:
         print(f"Order with id {order_id} does not exist.")
     except Exception as exc:

@@ -5,6 +5,13 @@ from apps.shared.models import AbstractBaseModel
 
 
 class Seat(AbstractBaseModel):
+    type = models.ForeignKey(
+        "SeatType",
+        on_delete=models.CASCADE,
+        verbose_name=_("Joy turi"),
+        null=True,
+        blank=True,
+    )
     concert = models.ForeignKey("Concert", on_delete=models.CASCADE)
     name = models.CharField(max_length=255, verbose_name=_("Nomi"))
     count = models.PositiveIntegerField(verbose_name=_("Joylar soni"))
