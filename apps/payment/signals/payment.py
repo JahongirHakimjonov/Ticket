@@ -81,5 +81,6 @@ def check_news_status(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Seat)
 def create_seat_numbers(sender, instance, created, **kwargs):
-    for i in range(1, instance.count + 1):
-        SeatNumber.objects.create(seat=instance, number=i)
+    if created:
+        for i in range(1, instance.count + 1):
+            SeatNumber.objects.create(seat=instance, number=i)
