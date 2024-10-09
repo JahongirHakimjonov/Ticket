@@ -14,8 +14,7 @@ python manage.py createadmin
 python manage.py collectstatic --noinput
 
 # Run Gunicorn server
-exec gunicorn core.wsgi:application --bind 0.0.0.0:8000
-
+exec gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120
 
 ## Start Celery worker and Flower
 #celery -A config worker --loglevel=info &
