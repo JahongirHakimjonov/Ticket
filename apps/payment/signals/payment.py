@@ -1,5 +1,5 @@
 # apps/payment/signals.py
-from django.db.models.signals import m2m_changed, pre_save
+from django.db.models.signals import m2m_changed
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -74,9 +74,9 @@ def check_order_status(sender, instance, **kwargs):
         instance.seat.save()
 
 
-@receiver(pre_save, sender=News)
-def check_news_status(sender, instance, **kwargs):
-    if instance._state.adding:
+@receiver(post_save, sender=News)
+def check_news_status(sender, instance, created, **kwargs):
+    if created:
         send_news_to_subscribers.delay(instance.id)
 
 
