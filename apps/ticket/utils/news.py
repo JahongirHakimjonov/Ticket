@@ -1,6 +1,6 @@
 from celery import shared_task
 from telebot.apihelper import ApiTelegramException
-
+from time import sleep
 from apps.bot.utils.send_message import send_news
 from apps.ticket.models import News, BotUsers
 
@@ -8,6 +8,7 @@ from apps.ticket.models import News, BotUsers
 @shared_task()
 def send_news_to_subscribers(news_id):
     try:
+        sleep(5)
         news = News.objects.get(id=news_id)
         users = BotUsers.objects.all()
         for user in users:
