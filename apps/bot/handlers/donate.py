@@ -2,6 +2,7 @@ from shortuuid import uuid
 from telebot import TeleBot, types
 from telebot.types import Message, CallbackQuery
 
+from apps.bot.utils import update_or_create_user
 from apps.bot.utils.language import set_language_code
 from apps.bot.utils.link import GeneratePayLink
 from apps.payme.utils.logging import logger
@@ -12,6 +13,13 @@ from django.utils.translation import activate, gettext_lazy as _
 
 def handle_donate(message: Message, bot: TeleBot):
     activate(set_language_code(message.from_user.id))
+    update_or_create_user(
+        telegram_id=message.from_user.id,
+        username=message.from_user.username,
+        first_name=message.from_user.first_name,
+        last_name=message.from_user.last_name,
+        is_active=True,
+    )
     keyboard = types.InlineKeyboardMarkup(row_width=2)
 
     # Create buttons for numbers from 10,000 to 100,000

@@ -9,6 +9,7 @@ from telebot.types import (
     Message,
 )
 
+from apps.bot.utils import update_or_create_user
 from apps.bot.utils.language import set_language_code
 from apps.ticket.models import Concert  # Import the Concert model
 
@@ -21,6 +22,13 @@ def handle_concert(message: Message, bot: TeleBot):
         .first()
     )
     activate(set_language_code(message.from_user.id))
+    update_or_create_user(
+        telegram_id=message.from_user.id,
+        username=message.from_user.username,
+        first_name=message.from_user.first_name,
+        last_name=message.from_user.last_name,
+        is_active=True,
+    )
     all_concerts = Concert.objects.filter(is_active=True, date__gte=timezone.now())
     if all_concerts.exists():
         if len(all_concerts) == 1:
