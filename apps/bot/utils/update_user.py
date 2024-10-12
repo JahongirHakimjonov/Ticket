@@ -6,8 +6,6 @@ def update_or_create_user(
     username=None,
     first_name=None,
     last_name=None,
-    phone=None,
-    language_code="uz",
     is_active=True,
 ):
     """
@@ -17,8 +15,7 @@ def update_or_create_user(
     :param username: User's username
     :param first_name: User's first name
     :param last_name: User's last name
-    :param phone: User's phone number
-    :param language_code: User's language code
+    :param is_active: User's activity status
     """
     BotUsers.objects.update_or_create(
         telegram_id=telegram_id,
@@ -26,8 +23,6 @@ def update_or_create_user(
             "username": username,
             "first_name": first_name,
             "last_name": last_name,
-            "phone": phone,
-            "language_code": language_code,
             "is_active": is_active,
         },
     )

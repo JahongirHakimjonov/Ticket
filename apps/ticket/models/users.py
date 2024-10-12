@@ -38,6 +38,7 @@ class BotUsers(AbstractBaseModel):
     language_code = models.CharField(
         max_length=10,
         choices=LANGUAGE_CODE,
+        default="uz",
         verbose_name=_("Til"),
     )
     is_active = models.BooleanField(default=True, verbose_name=_("Faolmi"))

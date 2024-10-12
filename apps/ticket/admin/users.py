@@ -10,6 +10,7 @@ class BotUsersAdmin(ModelAdmin):
         "id",
         "telegram_id",
         "username",
+        "full_name",
         "phone",
         "language_code",
         "is_active",
