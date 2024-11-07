@@ -16,7 +16,7 @@ class BotUsersAdmin(ModelAdmin):
         "is_active",
     )
     list_filter = ("is_active", "role", "language_code")
-    search_fields = ("first_name", "last_name", "phone", "username")
+    search_fields = ("first_name", "last_name", "phone", "username", "telegram_id","full_name")
     ordering = ("-created_at",)
     actions = ["make_active", "make_inactive"]
     list_filter_submit = True
