@@ -15,6 +15,8 @@ class Command(BaseCommand):
                 "ID",
                 "Buyurtmachi",
                 "Buyurtmachi raqami",
+                "Telegram ID",
+                "Telegram username",
                 "Joylashuv",
             ]
         )
@@ -25,6 +27,8 @@ class Command(BaseCommand):
                     ticket.id,
                     ticket.order.user.full_name,
                     ticket.order.user.phone,
+                    ticket.order.user.telegram_id,
+                    ticket.order.user.username,
                     ticket.seat,
                 ]
             )
